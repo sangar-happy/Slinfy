@@ -41,7 +41,6 @@
 			android:layout_below="@+id/username"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
-			android:layout_marginBottom="@dimen/element_margin"
 			android:drawableStart="@drawable/key_light"
 			android:drawablePadding="10dp"
 			android:hint="Password"
@@ -49,13 +48,31 @@
 			android:maxLines="1"
 			android:textColor="@color/colorAccent"
 			android:textColorHint="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@+id/submit"
+			app:layout_constraintBottom_toTopOf="@+id/forgotPassword"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/username" />
 
 		<Button
-			android:id="@+id/submit"
+			android:id="@+id/forgotPassword"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/password"
+			android:layout_marginBottom="@dimen/element_margin"
+			android:background="@drawable/transparent_button"
+			android:text="Forgot Password?"
+			android:textAlignment="center"
+			android:textAllCaps="false"
+			android:textColor="@color/colorAccent"
+			android:textSize="14sp"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/password"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintBottom_toTopOf="@id/login"
+			app:layout_constraintHorizontal_bias="0.9" />
+
+		<Button
+			android:id="@+id/login"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_below="@+id/password"
@@ -64,28 +81,37 @@
 			android:background="@drawable/button"
 			android:text="Login"
 			android:textColor="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@id/newUser"
+			app:layout_constraintBottom_toTopOf="@id/text"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/password" />
+			app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
+
+		<TextView
+			android:id="@+id/text"
+			android:layout_width="wrap_content"
+			android:layout_height="?android:listPreferredItemHeight"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/login"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			android:gravity="center_vertical"
+			android:textSize="14sp"
+			android:textColor="@color/colorAccent"
+			android:text="-- OR --"/>
 
 		<Button
-			android:id="@+id/newUser"
-			android:layout_width="wrap_content"
+			android:id="@+id/signup"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_below="@+id/password"
-			android:layout_marginTop="10dp"
-			android:background="@drawable/transparent_button"
-			android:text="New user ?"
-			android:textAlignment="center"
-			android:textAllCaps="false"
+			android:layout_marginStart="@dimen/sides_margin"
+			android:layout_marginEnd="@dimen/sides_margin"
+			android:background="@drawable/button"
+			android:text="Signup"
 			android:textColor="@color/colorAccent"
-			android:textSize="14sp"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/submit"
-			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintHorizontal_bias="0.9" />
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/text" />
 
 	</android.support.constraint.ConstraintLayout>
 </ScrollView>

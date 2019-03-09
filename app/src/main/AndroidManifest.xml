@@ -15,7 +15,7 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
 		tools:ignore="GoogleAppIndexingWarning">
-		<activity android:name=".loginPageWithTabLayout.ActivityForRegistration"
+		<activity android:name=".loginPageWithTabLayout.ActivityForSignup"
 			android:theme="@style/AppTheme.NoActionBar"/>
 
 		<activity android:name=".my_Custom_List.Main2Activity" />

@@ -18,7 +18,7 @@ import com.example.challenge1.R;
  */
 public class UserLoginFragment extends Fragment {
 
-	Button button, newUser;
+	Button login, signup;
 
 	public UserLoginFragment() {
 		// Required empty public constructor
@@ -30,10 +30,10 @@ public class UserLoginFragment extends Fragment {
 							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_user_login, container, false);
-		button = view.findViewById(R.id.submit);
-		newUser = view.findViewById(R.id.newUser);
+		login = view.findViewById(R.id.login);
+		signup = view.findViewById(R.id.signup);
 
-		button.setOnClickListener(new View.OnClickListener() {
+		login.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
@@ -41,11 +41,11 @@ public class UserLoginFragment extends Fragment {
 			}
 		});
 
-		newUser.setOnClickListener(new View.OnClickListener() {
+		signup.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				MainActivity activity = (MainActivity) getActivity();
-				Intent intent = new Intent(activity, ActivityForRegistration.class);
+				Intent intent = new Intent(activity, ActivityForSignup.class);
 				startActivity(intent);
 			}
 		});

@@ -12,7 +12,7 @@
 		android:layout_height="match_parent"
 		android:layout_gravity="center"
 		android:orientation="vertical"
-		tools:context=".loginPageWithTabLayout.ActivityForRegistration">
+		tools:context=".loginPageWithTabLayout.ActivityForSignup">
 
 		<TextView
 			android:id="@+id/heading"
@@ -61,62 +61,62 @@
 			android:maxLines="1"
 			android:textColor="@color/colorAccent"
 			android:textColorHint="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@+id/password"
+			app:layout_constraintBottom_toTopOf="@+id/signup"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/email" />
 
-		<EditText
-			android:id="@+id/password"
-			android:layout_width="match_parent"
-			android:layout_height="?android:listPreferredItemHeight"
-			android:layout_marginStart="@dimen/sides_margin"
-			android:layout_marginEnd="@dimen/sides_margin"
-			android:layout_marginBottom="@dimen/element_margin"
-			android:drawableStart="@drawable/key_light"
-			android:drawablePadding="10dp"
-			android:hint="Password"
-			android:inputType="textPassword"
-			android:maxLines="1"
-			android:textColor="@color/colorAccent"
-			android:textColorHint="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@+id/confirmPassword"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/username" />
+		<!--<EditText-->
+			<!--android:id="@+id/password"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="?android:listPreferredItemHeight"-->
+			<!--android:layout_marginStart="@dimen/sides_margin"-->
+			<!--android:layout_marginEnd="@dimen/sides_margin"-->
+			<!--android:layout_marginBottom="@dimen/element_margin"-->
+			<!--android:drawableStart="@drawable/key_light"-->
+			<!--android:drawablePadding="10dp"-->
+			<!--android:hint="Password"-->
+			<!--android:inputType="textPassword"-->
+			<!--android:maxLines="1"-->
+			<!--android:textColor="@color/colorAccent"-->
+			<!--android:textColorHint="@color/colorAccent"-->
+			<!--app:layout_constraintBottom_toTopOf="@+id/confirmPassword"-->
+			<!--app:layout_constraintEnd_toEndOf="parent"-->
+			<!--app:layout_constraintStart_toStartOf="parent"-->
+			<!--app:layout_constraintTop_toBottomOf="@+id/username" />-->
 
-		<EditText
-			android:id="@+id/confirmPassword"
-			android:layout_width="match_parent"
-			android:layout_height="?android:listPreferredItemHeight"
-			android:layout_marginStart="@dimen/sides_margin"
-			android:layout_marginEnd="@dimen/sides_margin"
-			android:layout_marginBottom="@dimen/element_margin"
-			android:drawableStart="@drawable/key_light"
-			android:drawablePadding="10dp"
-			android:hint="Confirm Password"
-			android:inputType="textPassword"
-			android:maxLines="1"
-			android:textColor="@color/colorAccent"
-			android:textColorHint="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@+id/register"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/password" />
+		<!--<EditText-->
+			<!--android:id="@+id/confirmPassword"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="?android:listPreferredItemHeight"-->
+			<!--android:layout_marginStart="@dimen/sides_margin"-->
+			<!--android:layout_marginEnd="@dimen/sides_margin"-->
+			<!--android:layout_marginBottom="@dimen/element_margin"-->
+			<!--android:drawableStart="@drawable/key_light"-->
+			<!--android:drawablePadding="10dp"-->
+			<!--android:hint="Confirm Password"-->
+			<!--android:inputType="textPassword"-->
+			<!--android:maxLines="1"-->
+			<!--android:textColor="@color/colorAccent"-->
+			<!--android:textColorHint="@color/colorAccent"-->
+			<!--app:layout_constraintBottom_toTopOf="@+id/register"-->
+			<!--app:layout_constraintEnd_toEndOf="parent"-->
+			<!--app:layout_constraintStart_toStartOf="parent"-->
+			<!--app:layout_constraintTop_toBottomOf="@+id/password" />-->
 
 		<Button
-			android:id="@+id/register"
+			android:id="@+id/signup"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
 			android:background="@drawable/button"
-			android:text="Register"
+			android:text="Sign up"
 			android:textColor="@color/colorAccent"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
+			app:layout_constraintTop_toBottomOf="@+id/username" />
 
 	</android.support.constraint.ConstraintLayout>
 </ScrollView>
