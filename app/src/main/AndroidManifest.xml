@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	package="com.example.challenge1">
-	<uses-permission android:name="android.permission.INTERACT_ACROSS_USER" android:protectionLevel="signature"/>
+
+	<uses-permission
+		android:name="android.permission.INTERACT_ACROSS_USER"
+		android:protectionLevel="signature" />
+
 	<application
 		android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
@@ -11,17 +15,20 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
 		tools:ignore="GoogleAppIndexingWarning">
-		<activity android:name=".LoginPageWithTabLayout.MainActivityForLogin"
+		<activity android:name=".loginPageWithTabLayout.ActivityForRegistration"
+			android:theme="@style/AppTheme.NoActionBar"/>
+
+		<activity android:name=".my_Custom_List.Main2Activity" />
+		<activity android:name=".MainActivity"
 			android:theme="@style/AppTheme.NoActionBar">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
+
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".My_Custom_List.Main2Activity"/>
-		<activity android:name=".MainActivity" />
 		<activity android:name=".githubExample_Custom_List.MainActivity" />
-		<activity android:name=".dev2qaExample_Custom_List.ListViewWithCheckboxActivity"/>
+		<activity android:name=".dev2qaExample_Custom_List.ListViewWithCheckboxActivity" />
 	</application>
 
 </manifest>

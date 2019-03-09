@@ -1,19 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/scrollView2"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:background="@color/colorPrimary">
 
 	<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="match_parent"
 		android:layout_gravity="center"
 		android:orientation="vertical"
-		android:background="@color/colorPrimary"
-		tools:context=".loginPageWithTabLayout.UserLoginFragment">
+		tools:context=".loginPageWithTabLayout.ActivityForRegistration">
+
+		<TextView
+			android:id="@+id/text"
+			android:layout_width="match_parent"
+			android:layout_height="?android:listPreferredItemHeight"
+			android:gravity="center_vertical"
+			android:textColor="@color/colorAccent"
+			android:text=" "
+			android:textSize="16sp"
+			app:layout_constraintBottom_toTopOf="@+id/email"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<EditText
+			android:id="@+id/email"
+			android:layout_width="match_parent"
+			android:layout_height="?android:listPreferredItemHeight"
+			android:layout_marginStart="@dimen/sides_margin"
+			android:layout_marginEnd="@dimen/sides_margin"
+			android:layout_marginBottom="@dimen/element_margin"
+			android:drawableStart="@drawable/email"
+			android:drawablePadding="10dp"
+			android:hint="Email"
+			android:inputType="textEmailAddress"
+			android:maxLines="1"
+			android:textColor="@color/colorAccent"
+			android:textColorHint="@color/colorAccent"
+			app:layout_constraintBottom_toTopOf="@+id/username"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/text" />
 
 		<EditText
 			android:id="@+id/username"
@@ -32,13 +63,12 @@
 			app:layout_constraintBottom_toTopOf="@+id/password"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			app:layout_constraintTop_toBottomOf="@id/email" />
 
 		<EditText
 			android:id="@+id/password"
 			android:layout_width="match_parent"
 			android:layout_height="?android:listPreferredItemHeight"
-			android:layout_below="@+id/username"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
 			android:layout_marginBottom="@dimen/element_margin"
@@ -49,43 +79,44 @@
 			android:maxLines="1"
 			android:textColor="@color/colorAccent"
 			android:textColorHint="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@+id/submit"
+			app:layout_constraintBottom_toTopOf="@+id/confirmPassword"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/username" />
 
-		<Button
-			android:id="@+id/submit"
+		<EditText
+			android:id="@+id/confirmPassword"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_below="@+id/password"
+			android:layout_height="?android:listPreferredItemHeight"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
-			android:background="@drawable/opaque_button"
-			android:text="Login"
+			android:layout_marginBottom="@dimen/element_margin"
+			android:drawableStart="@drawable/key_light"
+			android:drawablePadding="10dp"
+			android:hint="Confirm Password"
+			android:inputType="textPassword"
+			android:maxLines="1"
 			android:textColor="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@id/newUser"
+			android:textColorHint="@color/colorAccent"
+			app:layout_constraintBottom_toTopOf="@+id/register"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/password" />
 
 		<Button
-			android:id="@+id/newUser"
-			android:layout_width="wrap_content"
+			android:id="@+id/register"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_below="@+id/password"
-			android:layout_marginTop="10dp"
-			android:background="@drawable/transparent_button"
-			android:text="New user ?"
-			android:textAlignment="center"
-			android:textAllCaps="false"
+			android:layout_marginStart="@dimen/sides_margin"
+			android:layout_marginEnd="@dimen/sides_margin"
+			android:background="@drawable/opaque_button"
+			android:text="Register"
 			android:textColor="@color/colorAccent"
-			android:textSize="14sp"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/submit"
-			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintHorizontal_bias="0.9" />
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.0"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/password" />
 
 	</android.support.constraint.ConstraintLayout>
 </ScrollView>

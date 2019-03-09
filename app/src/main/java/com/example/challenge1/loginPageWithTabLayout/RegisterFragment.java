@@ -1,4 +1,4 @@
-package com.example.challenge1.LoginPageWithTabLayout;
+package com.example.challenge1.loginPageWithTabLayout;
 
 
 import android.os.Bundle;

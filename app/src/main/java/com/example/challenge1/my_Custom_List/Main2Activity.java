@@ -1,4 +1,4 @@
-package com.example.challenge1.My_Custom_List;
+package com.example.challenge1.my_Custom_List;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

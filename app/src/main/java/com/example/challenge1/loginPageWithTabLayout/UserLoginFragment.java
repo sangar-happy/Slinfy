@@ -1,4 +1,4 @@
-package com.example.challenge1.LoginPageWithTabLayout;
+package com.example.challenge1.loginPageWithTabLayout;
 
 
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.challenge1.MainActivity;
 import com.example.challenge1.R;
 
 /**
@@ -46,10 +47,10 @@ public class UserLoginFragment extends Fragment {
 		newUser.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				MainActivityForLogin activity = (MainActivityForLogin) getActivity();
-				activity.fragmentTransaction = activity.fragmentManager.beginTransaction();
-				activity.fragmentTransaction.replace(R.id.fr, registerFragment);
-				activity.fragmentTransaction.commit();
+				MainActivity activity = (MainActivity) getActivity();
+				Intent intent = new Intent(activity, ActivityForRegistration.class);
+				activity.finish();
+				startActivity(intent);
 			}
 		});
 		return view;
