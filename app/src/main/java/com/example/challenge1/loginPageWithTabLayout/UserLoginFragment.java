@@ -18,7 +18,6 @@ import com.example.challenge1.R;
  */
 public class UserLoginFragment extends Fragment {
 
-	RegisterFragment registerFragment;
 	Button button, newUser;
 
 	public UserLoginFragment() {
@@ -34,8 +33,6 @@ public class UserLoginFragment extends Fragment {
 		button = view.findViewById(R.id.submit);
 		newUser = view.findViewById(R.id.newUser);
 
-		registerFragment = new RegisterFragment();
-
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -49,7 +46,6 @@ public class UserLoginFragment extends Fragment {
 			public void onClick(View v) {
 				MainActivity activity = (MainActivity) getActivity();
 				Intent intent = new Intent(activity, ActivityForRegistration.class);
-				activity.finish();
 				startActivity(intent);
 			}
 		});

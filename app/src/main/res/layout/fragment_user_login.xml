@@ -61,7 +61,7 @@
 			android:layout_below="@+id/password"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
-			android:background="@drawable/opaque_button"
+			android:background="@drawable/button"
 			android:text="Login"
 			android:textColor="@color/colorAccent"
 			app:layout_constraintBottom_toTopOf="@id/newUser"

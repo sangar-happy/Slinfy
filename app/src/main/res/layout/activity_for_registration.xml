@@ -15,17 +15,18 @@
 		tools:context=".loginPageWithTabLayout.ActivityForRegistration">
 
 		<TextView
-			android:id="@+id/text"
-			android:layout_width="match_parent"
+			android:id="@+id/heading"
+			android:layout_width="wrap_content"
 			android:layout_height="?android:listPreferredItemHeight"
 			android:gravity="center_vertical"
 			android:textColor="@color/colorAccent"
-			android:text=" "
-			android:textSize="16sp"
+			android:text="Enter following details"
+			android:textSize="18sp"
 			app:layout_constraintBottom_toTopOf="@+id/email"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"/>
 
 		<EditText
 			android:id="@+id/email"
@@ -44,7 +45,7 @@
 			app:layout_constraintBottom_toTopOf="@+id/username"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/text" />
+			app:layout_constraintTop_toBottomOf="@id/heading"/>
 
 		<EditText
 			android:id="@+id/username"
@@ -109,14 +110,13 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
-			android:background="@drawable/opaque_button"
+			android:background="@drawable/button"
 			android:text="Register"
 			android:textColor="@color/colorAccent"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintHorizontal_bias="0.0"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/password" />
+			app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
 
 	</android.support.constraint.ConstraintLayout>
 </ScrollView>
