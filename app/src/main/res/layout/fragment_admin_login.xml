@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		tools:context=".LoginPageWithTabLayout.AdminLoginFragment"
+		android:orientation="vertical"
+		android:layout_gravity="center">
+
+		<EditText
+			android:id="@+id/username"
+			android:layout_width="match_parent"
+			android:layout_height="?android:listPreferredItemHeight"
+			android:layout_marginLeft="25dp"
+			android:layout_marginRight="25dp"
+			android:layout_marginBottom="25dp"
+			android:textColor="@color/colorAccent"
+			android:textColorHint="@color/colorAccent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toTopOf="@+id/password"
+			android:drawableLeft="@drawable/account_light"
+			android:drawablePadding="10dp"
+			android:maxLines="1"
+			android:hint="Admin ID"/>
+
+		<EditText
+			android:id="@+id/password"
+			android:layout_width="match_parent"
+			android:layout_height="?android:listPreferredItemHeight"
+			android:layout_below="@+id/username"
+			android:layout_marginLeft="25dp"
+			android:layout_marginRight="25dp"
+			android:layout_marginBottom="25dp"
+			android:textColor="@color/colorAccent"
+			android:textColorHint="@color/colorAccent"
+			android:inputType="textPassword"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/username"
+			app:layout_constraintBottom_toTopOf="@+id/submit"
+			android:drawableLeft="@drawable/key_light"
+			android:drawablePadding="10dp"
+			android:maxLines="1"
+			android:hint="Password"/>
+
+		<Button
+			android:id="@+id/submit"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/password"
+			android:layout_marginLeft="25dp"
+			android:layout_marginRight="25dp"
+			android:background="@drawable/opaque_button"
+			android:text="Login"
+			android:textColor="@color/colorAccent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/password"/>
+
+	</android.support.constraint.ConstraintLayout>
+</ScrollView>
