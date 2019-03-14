@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 					case 1:
 						fragment = adminLoginFragment;
 						break;
-
 				}
 
 				fragmentTransaction.replace(R.id.fr, fragment);

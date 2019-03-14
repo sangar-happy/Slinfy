@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<color name="colorPrimaryDark">#131C36</color>
-	<color name="colorPrimary">#1C2541</color>
+	<color name="colorPrimaryDark_blue">#131C36</color>
+	<color name="colorPrimary_blue">#1C2541</color>
+
+	<!--174419-->
+	<color name="colorPrimaryDark_green">#116c2f</color>
+	<!--316D33-->
+	<color name="colorPrimary_green">#0C8A13</color>
+
+
+	<color name="colorPrimaryDark_gray">#202020</color>
+	<color name="colorPrimary_gray">#2B2B2B</color>
+
 	<color name="opaqueColor">#65FFFEFE</color>
 	<color name="opaqueColorDull">#4DFFFFFF</color>
 	<color name="colorAccent">#D1D0D0</color>
 
 	<color name="transparent">#00000000</color>
 	<color name="warning">#DB2D2D</color>
+
+
+
 
 
 	<!--<color name="d2">#424c6f</color>-->

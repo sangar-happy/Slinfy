@@ -3,13 +3,13 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@color/colorPrimary">
+	android:background="@color/colorPrimary_gray">
 
 	<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
 		android:layout_gravity="center"
 		android:orientation="vertical"
 		tools:context=".loginPageWithTabLayout.ActivityForSignup">
@@ -54,7 +54,7 @@
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
 			android:layout_marginBottom="@dimen/element_margin"
-			android:drawableStart="@drawable/account_light"
+			android:drawableStart="@drawable/account"
 			android:drawablePadding="10dp"
 			android:hint="Username"
 			android:inputType="text"

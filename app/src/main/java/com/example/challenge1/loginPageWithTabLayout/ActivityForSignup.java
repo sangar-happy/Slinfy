@@ -21,12 +21,12 @@ public class ActivityForSignup extends AppCompatActivity {
 		signup = findViewById(R.id.signup);
 		heading = findViewById(R.id.heading);
 
-		signup.setOnClickListener(new View.OnClickListener() {
+		/*signup.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				heading.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.warning));
 				heading.setText("*Passwords do not match");
 			}
-		});
+		});*/
 	}
 }

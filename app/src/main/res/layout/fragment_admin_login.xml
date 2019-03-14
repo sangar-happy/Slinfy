@@ -2,7 +2,7 @@
 <ScrollView android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:background="@color/colorPrimary">
+	android:background="@color/colorPrimary_gray">
 
 	<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -26,7 +26,7 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintBottom_toTopOf="@+id/password"
-			android:drawableLeft="@drawable/account_light"
+			android:drawableLeft="@drawable/account"
 			android:drawablePadding="10dp"
 			android:inputType="text"
 			android:maxLines="1"
@@ -47,7 +47,8 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/username"
 			app:layout_constraintBottom_toTopOf="@+id/submit"
-			android:drawableLeft="@drawable/key_light"
+			android:drawableLeft="@drawable/key"
+			android:drawableRight="@drawable/visibility_off"
 			android:drawablePadding="10dp"
 			android:maxLines="1"
 			android:hint="Password"/>

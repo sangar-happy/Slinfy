@@ -12,7 +12,7 @@
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
 		android:orientation="vertical"
-		android:background="@color/colorPrimary"
+		android:background="@color/colorPrimary_gray"
 		tools:context=".loginPageWithTabLayout.UserLoginFragment">
 
 		<EditText
@@ -22,7 +22,7 @@
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
 			android:layout_marginBottom="@dimen/element_margin"
-			android:drawableStart="@drawable/account_light"
+			android:drawableStart="@drawable/account"
 			android:drawablePadding="10dp"
 			android:hint="Username"
 			android:inputType="text"
@@ -41,7 +41,7 @@
 			android:layout_below="@+id/username"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
-			android:drawableStart="@drawable/key_light"
+			android:drawableStart="@drawable/key"
 			android:drawablePadding="10dp"
 			android:hint="Password"
 			android:inputType="textPassword"
@@ -70,6 +70,18 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintBottom_toTopOf="@id/login"
 			app:layout_constraintHorizontal_bias="0.9" />
+
+
+		<ImageButton
+			android:id="@+id/visibility"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/visibility_off"
+			android:background="@color/transparent"
+			app:layout_constraintTop_toTopOf="@id/password"
+			app:layout_constraintEnd_toEndOf="@id/password"
+			app:layout_constraintBottom_toBottomOf="@id/password"
+			/>
 
 		<Button
 			android:id="@+id/login"
