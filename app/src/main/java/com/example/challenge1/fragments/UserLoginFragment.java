@@ -1,17 +1,19 @@
-package com.example.challenge1.loginPageWithTabLayout;
-
+package com.example.challenge1.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.challenge1.MainActivity;
 import com.example.challenge1.R;
+import com.example.challenge1.activities.ActivityForSignup;
+import com.example.challenge1.activities.MainActivity;
+import com.google.android.material.textfield.TextInputEditText;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +21,7 @@ import com.example.challenge1.R;
 public class UserLoginFragment extends Fragment {
 
 	Button login, signup;
+	TextInputEditText username, password;
 
 	public UserLoginFragment() {
 		// Required empty public constructor
@@ -32,6 +35,7 @@ public class UserLoginFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_user_login, container, false);
 		login = view.findViewById(R.id.login);
 		signup = view.findViewById(R.id.signup);
+		password = view.findViewById(R.id.password);
 
 		login.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -49,6 +53,7 @@ public class UserLoginFragment extends Fragment {
 				startActivity(intent);
 			}
 		});
+
 		return view;
 	}
 

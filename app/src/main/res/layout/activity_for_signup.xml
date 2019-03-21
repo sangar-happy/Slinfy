@@ -5,14 +5,14 @@
 	android:layout_height="match_parent"
 	android:background="@color/colorPrimary_gray">
 
-	<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
 		android:orientation="vertical"
-		tools:context=".loginPageWithTabLayout.ActivityForSignup">
+		tools:context=".Activities.ActivityForSignup">
 
 		<TextView
 			android:id="@+id/heading"
@@ -42,13 +42,13 @@
 			android:maxLines="1"
 			android:textColor="@color/colorAccent"
 			android:textColorHint="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@+id/username"
+			app:layout_constraintBottom_toTopOf="@+id/adminId_layout"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/heading"/>
 
 		<EditText
-			android:id="@+id/username"
+			android:id="@+id/adminId_layout"
 			android:layout_width="match_parent"
 			android:layout_height="?android:listPreferredItemHeight"
 			android:layout_marginStart="@dimen/sides_margin"
@@ -116,7 +116,7 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/username" />
+			app:layout_constraintTop_toBottomOf="@+id/adminId_layout" />
 
-	</android.support.constraint.ConstraintLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

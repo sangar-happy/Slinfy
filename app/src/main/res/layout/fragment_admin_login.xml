@@ -1,63 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:background="@color/colorPrimary_gray">
 
-	<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		tools:context=".loginPageWithTabLayout.AdminLoginFragment"
+		android:layout_gravity="center"
 		android:orientation="vertical"
-		android:layout_gravity="center">
+		tools:context=".Fragments.AdminLoginFragment">
 
-		<EditText
-			android:id="@+id/username"
-			android:layout_width="match_parent"
-			android:layout_height="?android:listPreferredItemHeight"
-			android:layout_marginLeft="25dp"
-			android:layout_marginRight="25dp"
-			android:layout_marginBottom="25dp"
-			android:textColor="@color/colorAccent"
-			android:textColorHint="@color/colorAccent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintBottom_toTopOf="@+id/password"
-			android:drawableLeft="@drawable/account"
-			android:drawablePadding="10dp"
-			android:inputType="text"
-			android:maxLines="1"
-			android:hint="Admin ID"/>
-
-		<EditText
-			android:id="@+id/password"
-			android:layout_width="match_parent"
-			android:layout_height="?android:listPreferredItemHeight"
-			android:layout_below="@+id/username"
-			android:layout_marginLeft="25dp"
-			android:layout_marginRight="25dp"
-			android:layout_marginBottom="25dp"
-			android:textColor="@color/colorAccent"
-			android:textColorHint="@color/colorAccent"
-			android:inputType="textPassword"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/username"
-			app:layout_constraintBottom_toTopOf="@+id/submit"
-			android:drawableLeft="@drawable/key"
-			android:drawableRight="@drawable/visibility_off"
-			android:drawablePadding="10dp"
-			android:maxLines="1"
-			android:hint="Password"/>
-
-		<Button
-			android:id="@+id/submit"
+		<com.google.android.material.textfield.TextInputLayout
+			android:id="@+id/adminId_layout"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_below="@+id/password"
+			android:layout_marginLeft="@dimen/sides_margin"
+			android:layout_marginRight="@dimen/sides_margin"
+			android:layout_marginBottom="@dimen/element_margin"
+			android:textColorHint="@color/opaqueColor"
+			app:layout_constraintBottom_toTopOf="@+id/password_layout"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<com.google.android.material.textfield.TextInputEditText
+				android:id="@+id/adminId"
+				android:layout_width="match_parent"
+				android:layout_height="?android:listPreferredItemHeight"
+
+				android:hint="Admin ID"
+				android:inputType="text"
+				android:maxLines="1"
+				android:textColor="@color/colorAccent" />
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<com.google.android.material.textfield.TextInputLayout
+			android:id="@+id/password_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/sides_margin"
+			android:layout_marginRight="@dimen/sides_margin"
+			android:layout_marginBottom="@dimen/element_margin"
+			android:textColorHint="@color/opaqueColor"
+			app:passwordToggleEnabled="true"
+			app:passwordToggleTint="@color/colorAccent"
+			app:layout_constraintBottom_toTopOf="@+id/login"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/adminId_layout">
+
+			<com.google.android.material.textfield.TextInputEditText
+				android:id="@+id/password"
+				android:layout_width="match_parent"
+				android:layout_height="?android:listPreferredItemHeight"
+
+				android:hint="Password"
+				android:inputType="textPassword"
+				android:maxLines="1"
+				android:textColor="@color/colorAccent" />
+
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<Button
+			android:id="@+id/login"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
 			android:layout_marginLeft="25dp"
 			android:layout_marginRight="25dp"
 			android:background="@drawable/button"
@@ -66,7 +76,7 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/password"/>
+			app:layout_constraintTop_toBottomOf="@+id/password_layout" />
 
-	</android.support.constraint.ConstraintLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
