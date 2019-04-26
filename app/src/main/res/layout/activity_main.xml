@@ -1,34 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".activities.MainActivity"
-	android:orientation="vertical"
-	android:background="@color/colorPrimary_gray">
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
 
-	<Button
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal"
-		android:background="@color/opaqueColor"
-		android:text="Google Signin"
-		android:onClick="googleSignin"/>
+    <!--tools:openDrawer="start"-->
 
-	<com.google.android.material.tabs.TabLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/tab"
-		android:background="@color/opaqueColor"
-		app:tabTextColor="@color/colorAccent"
-		app:tabIndicatorColor="@color/colorAccent"
-		app:tabRippleColor="@color/colorAccent"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary_gray"
+        android:orientation="vertical"
+        tools:context=".activities.MainActivity">
 
-	<FrameLayout
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:id="@+id/fr"/>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary_gray"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/Theme.AppCompat.Light" />
 
 
-</LinearLayout>
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/find_user"
+                android:text="Find User"/>
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorNavBackground"
+        app:headerLayout="@layout/user_nav_header"
+        app:itemIconTint="@color/nav_menu_selector"
+        app:itemTextColor="@color/nav_menu_selector"
+        app:menu="@menu/user_drawer_menu" />
+</androidx.drawerlayout.widget.DrawerLayout>
+
+
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:background="@color/opaqueColor"-->
+    <!--android:onClick="googleSignin"-->
+    <!--android:text="Google Signin" />-->
+
+    <!--<com.google.android.material.tabs.TabLayout-->
+    <!--android:id="@+id/tab"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/opaqueColor"-->
+    <!--app:tabIndicatorColor="@color/colorAccent"-->
+    <!--app:tabRippleColor="@color/colorAccent"-->
+    <!--app:tabTextColor="@color/colorAccent" />-->

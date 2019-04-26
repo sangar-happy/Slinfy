@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.challenge1.R;
-import com.example.challenge1.activities.ActivityForSignup;
+import com.example.challenge1.activities.SignIn;
 import com.example.challenge1.activities.MainActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -34,7 +34,7 @@ public class UserLoginFragment extends Fragment {
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_user_login, container, false);
 		login = view.findViewById(R.id.login);
-		signup = view.findViewById(R.id.signup);
+		signup = view.findViewById(R.id.verificationCode);
 		password = view.findViewById(R.id.password);
 
 		login.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +49,7 @@ public class UserLoginFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				MainActivity activity = (MainActivity) getActivity();
-				Intent intent = new Intent(activity, ActivityForSignup.class);
+				Intent intent = new Intent(activity, SignIn.class);
 				startActivity(intent);
 			}
 		});
