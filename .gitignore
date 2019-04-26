@@ -10,3 +10,4 @@
 /captures
 .externalNativeBuild
 .aswb
+/app/google-services.json
