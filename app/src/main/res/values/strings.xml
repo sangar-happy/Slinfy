@@ -8,4 +8,7 @@
     <string name="facebook_status_fmt">Facebook User: %s</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
     <string name="id">1061656103622-gtqmak53l1tju3udv53hf18pkp99c6af.apps.googleusercontent.com</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_after_signup">ActivityAfterSignup</string>
 </resources>

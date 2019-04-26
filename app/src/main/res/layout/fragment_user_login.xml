@@ -15,7 +15,7 @@
 		android:background="@color/colorPrimary_gray">
 
 		<Button
-			android:id="@+id/signup"
+			android:id="@+id/VerificationCode"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="@dimen/element_margin"
@@ -37,7 +37,7 @@
 			app:layout_constraintEnd_toEndOf="parent"
 
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/signup">
+			app:layout_constraintTop_toBottomOf="@id/verificationCode">
 
 			<com.google.android.material.textfield.TextInputEditText
 				android:id="@+id/username"

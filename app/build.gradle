@@ -35,14 +35,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:16.1.0'
     implementation 'com.google.firebase:firebase-firestore:18.1.0'
     implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-database:16.1.0'
 
     implementation 'com.google.android.material:material:1.0.0'
+    // implementation 'androidx.core.graphics.drawable.RoundedBitmapDrawableFactory:1.0.0'
 
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
 
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
-    implementation 'com.google.firebase:firebase-auth:16.2.0'
-    implementation 'com.google.firebase:firebase-core:16.0.8'
-    implementation 'com.facebook.android:facebook-login:4.41.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

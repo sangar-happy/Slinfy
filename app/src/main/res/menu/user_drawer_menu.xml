@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!--tools:showIn="navigation_view"-->
+
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/ic_event"
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_loginOrSignUp"
+            android:icon="@drawable/account"
+            android:title="Sign In" />
+        <item
+            android:id="@+id/nav_contactUs"
+            android:icon="@drawable/ic_message"
+            android:title="Contact Us" />
+    </group>
+
+    <item android:title="Chats">
+
+        <menu>
+            <item android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share"
+                android:title="Share"/>
+        </menu>
+
+    </item>
+</menu>

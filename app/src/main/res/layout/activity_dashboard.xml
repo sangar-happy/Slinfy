@@ -13,7 +13,7 @@
 
         <include
             android:id="@+id/dashboardToolbar"
-            layout="@layout/com_facebook_activity_layout" />
+            />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/dashboardTabs"

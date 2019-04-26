@@ -9,14 +9,15 @@
 	<!--316D33-->
 	<color name="colorPrimary_green">#0C8A13</color>
 
-
 	<color name="colorPrimaryDark_gray">#202020</color>
 	<color name="colorPrimary_gray">#2B2B2B</color>
+	<color name="colorNavBackground">#686A6B</color>
 
 	<color name="opaqueColor">#65FFFEFE</color>
 	<color name="opaqueColorDull">#4DFFFFFF</color>
 	<color name="colorAccent">#D1D0D0</color>
 
+	<color name="black">#000000</color>
 	<color name="transparent">#00000000</color>
 	<color name="warning">#DB2D2D</color>
 
