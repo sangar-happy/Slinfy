@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.challenge1.R;
+import com.example.challenge1.utils.ProgressBarUtil;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -54,6 +55,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
 
+    private ProgressBarUtil progressBarUtil;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,6 +70,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
 		heading = findViewById(R.id.heading);
         phoneNumber = findViewById(R.id.phoneNumber);
         code = findViewById(R.id.code);
+
+        progressBarUtil = new ProgressBarUtil(this);
 
 		verification.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -148,13 +153,16 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
 
     private void userLoggedIn() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.d(TAG, "Checking if user is logged in");
         if(user != null) {
             //start new activity
             Toast.makeText(this, "User Identified", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SignIn.this, MainActivity.class);
             startActivity(intent);
-            //finish this activity
+            Log.d(TAG, "User Identified");
             finish();
+        } else {
+            Log.d(TAG, "User is not logged in");
         }
     }
 
@@ -179,6 +187,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
+            Log.d(TAG, "requestCode received");
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
@@ -192,6 +201,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        //progressBarUtil.setDialog(true);
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -207,6 +218,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Snackbar.make(findViewById(R.id.layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                         }
+
+                       //progressBarUtil.setDialog(false);
                     }
                 });
     }
@@ -224,5 +237,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
-
+    @Override
+    public void onStop() {
+        super.onStop();
+        progressBarUtil.setDialog(false);
+    }
 }

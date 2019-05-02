@@ -2,17 +2,19 @@ package com.example.challenge1.activities;
 
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import android.provider.MediaStore;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -20,16 +22,15 @@ import android.widget.Toast;
 
 import com.example.challenge1.R;
 import com.example.challenge1.fragments.BlankFragment;
-import com.example.challenge1.fragments.UserLoginFragment;
+import com.example.challenge1.utils.ProgressBarUtil;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.squareup.picasso.Picasso;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
 
     private FirebaseAuth auth;
+    private final String TAG = "Main Activity";
+    private final int SIGNIN_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +61,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         frameLayout = findViewById(R.id.fragment_container);
         fragmentManager = getSupportFragmentManager();
 
-        drawer = findViewById(R.id.drawer_layout);
-
+        drawer = findViewById(R.id.main_drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         Button findUser = findViewById(R.id.find_user);
         findUser.setOnClickListener(new View.OnClickListener() {
@@ -133,21 +137,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "YOLO", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.nav_editProfile:
+            case R.id.nav_events:
 
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.add(R.id.fragment_container, new BlankFragment());
                 fragmentTransaction.commit();
+                break;
 
+            case R.id.nav_more:
                 Intent intent = new Intent(MainActivity.this, SignIn.class);
                 startActivity(intent);
                 break;
-
-            case R.id.nav_myChats:
-                intent = new Intent(MainActivity.this, SignIn.class);
-                startActivity(intent);
+                
+            case R.id.nav_signin:
+                Intent intent_signin = new Intent(getApplicationContext(), SignIn.class);
+                startActivityForResult(intent_signin, SIGNIN_REQUEST_CODE);
                 break;
-
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -157,18 +162,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (user != null) {
 
-            View headerLayout = navigationView.getHeaderView(0);
-            CircleImageView circleImageView = headerLayout.findViewById(R.id.nav_profile_pic);
-            Picasso.get().load(user.getPhotoUrl()).into(circleImageView);
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.drawer_menu_user);
+
+//            View nav_header = LayoutInflater.from(this).inflate(R.layout.nav_header, (ViewGroup) findViewById(R.id.nav_view), false);
+            View nav_header = LayoutInflater.from(this).inflate(R.layout.nav_header_google_user, (ViewGroup) findViewById(R.id.nav_view), false);
+//            ((TextView) nav_header.findViewById(R.id.name)).setText("UserName");
+            navigationView.removeView(findViewById(R.id.nav_view));
+            navigationView.addHeaderView(nav_header);
+
+            for (UserInfo userInfo: FirebaseAuth.getInstance().getCurrentUser().getProviderData()) {
+                if (userInfo.getProviderId().equals("google.com")) {
+                    Log.d(TAG, "provider is google");
+                    View headerLayout = LayoutInflater.from(this).inflate(R.layout.nav_header_google_user,null);
+                    CircleImageView circleImageView = headerLayout.findViewById(R.id.nav_profile_pic);
+                    Picasso.get().load(user.getPhotoUrl()).into(circleImageView);
 
 
-            TextView name = headerLayout.findViewById(R.id.nav_name);
-            TextView identifier = headerLayout.findViewById(R.id.nav_identifier);
+                    TextView name = headerLayout.findViewById(R.id.nav_editProfile);
+                    TextView identifier = headerLayout.findViewById(R.id.nav_identifier);
 
-            name.setText(user.getDisplayName());
-            identifier.setText(user.getEmail());
+//                    name.setText(user.getDisplayName());
+//                    identifier.setText(user.getEmail());
+                }
+                if(userInfo.getProviderId().equals("phone")) {
+                    //TODO
+                }
+            }
+
+
+            navigationView.setNavigationItemSelectedListener(this);
+
         } else {
-
+            navigationView.setNavigationItemSelectedListener(this);
         }
 
     }
@@ -184,4 +210,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.addDrawerListener(null);
         }
     }
+
 }

@@ -6,10 +6,8 @@
     <uses-permission
         android:name="android.permission.INTERNET"
         android:protectionLevel="signature" />
-    <uses-permission
-        android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission
-        android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -19,19 +17,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme_gray"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.FindUserActivity"/>
-        <activity android:name=".activities.DashboardActivity" />
         <activity
-            android:name=".activities.SignIn"
-            android:theme="@style/AppTheme_gray.NoActionBar"/>
-        <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.FragmentNavigationMain"
+            android:label="@string/title_activity_fragment_navigation_main"
             android:theme="@style/AppTheme_gray.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.FindUserActivity" />
+        <activity android:name=".activities.DashboardActivity" />
+        <activity
+            android:name=".activities.SignIn"
+            android:theme="@style/AppTheme_gray.NoActionBar" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:theme="@style/AppTheme_gray.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

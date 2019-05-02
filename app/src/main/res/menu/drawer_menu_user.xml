@@ -18,7 +18,7 @@
             android:title="Edit Profile" />
         <item
             android:id="@+id/nav_contactUs"
-            android:icon="@drawable/ic_forum"
+            android:icon="@drawable/ic_contact_us"
             android:title="Contact Us" />
         <item
             android:id="@+id/nav_more"
