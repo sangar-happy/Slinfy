@@ -66,42 +66,42 @@ public class FindUserActivity extends AppCompatActivity {
                 message = isoPrefix + message;
             }
 
-            User user = new User(name, message, "1:00 PM", R.mipmap.ic_launcher);
-            contactList.add(user);
+//            User user = new User(name, message, "1:00 PM", R.mipmap.ic_launcher);
+//            contactList.add(user);
 
-            getUserDetails(user);
+//            getUserDetails(user);
         }
     }
 
     private void getUserDetails(User contactList) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
-        Query query = databaseReference.orderByChild("phone").equalTo(contactList.getMessage());
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    String message = "",
-                            name = "";
+//        Query query = databaseReference.orderByChild("phone").equalTo(contactList.getMessage());
+//        query.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.exists()) {
+//                    String message = "",
+//                            name = "";
+//
+//                    for(DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+//                        if(childSnapshot.child("phone").getValue() != null) {
+//                            message = childSnapshot.child("phone").getValue().toString();
+//                        }
+//                        if(childSnapshot.child("name").getValue() != null) {
+//                            name = childSnapshot.child("name").getValue().toString();
+//                        }
+//
+//                        User user = new User(name, message, "1:00 PM", R.mipmap.ic_launcher);
+//                        userList.add(user);
+//
+//                        userListAdapter.notifyDataSetChanged();
+//                    }
+//                }
+//            }
 
-                    for(DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                        if(childSnapshot.child("phone").getValue() != null) {
-                            message = childSnapshot.child("phone").getValue().toString();
-                        }
-                        if(childSnapshot.child("name").getValue() != null) {
-                            name = childSnapshot.child("name").getValue().toString();
-                        }
-
-                        User user = new User(name, message, "1:00 PM", R.mipmap.ic_launcher);
-                        userList.add(user);
-
-                        userListAdapter.notifyDataSetChanged();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
-        });
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {}
+//        });
     }
 
     private String getCountryISO() {

@@ -13,4 +13,7 @@
     <string name="user_name">User Name</string>
     <string name="my_chats">My Chats</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="home_warming">Home Warming</string>
+    <string name="engagement">Engagement</string>
+    <string name="graduation">Graduation</string>
 </resources>

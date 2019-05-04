@@ -1,30 +1,26 @@
 package com.example.challenge1.models;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class User {
 
-    private String name, message, time;
-    private int profilePic;
+    private String name, email;
 
-    public User(String name, String message, String time, int profilePic) {
+    public User() {
+        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+    }
+
+    public User(String name, String email) {
         this.name = name;
-        this.message = message;
-        this.time = time;
-        this.profilePic = profilePic;
+        this.email = email;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public int getProfilePic() {
-        return profilePic;
+    public String getEmail() {
+        return email;
     }
 }

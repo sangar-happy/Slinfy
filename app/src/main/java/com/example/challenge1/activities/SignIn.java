@@ -69,7 +69,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener{
 		verification = findViewById(R.id.verificationCode);
 		heading = findViewById(R.id.heading);
         phoneNumber = findViewById(R.id.phoneNumber);
-        code = findViewById(R.id.code);
+        code = findViewById(R.id.code_verification);
 
         progressBarUtil = new ProgressBarUtil(this);
 

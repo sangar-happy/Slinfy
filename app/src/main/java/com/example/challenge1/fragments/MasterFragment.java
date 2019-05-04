@@ -6,11 +6,12 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.challenge1.R;
 
@@ -20,14 +21,11 @@ import com.example.challenge1.R;
 public class MasterFragment extends Fragment {
 
     private Callbacks callbacks;
-    private View lastItemSelected;
+    private View events;
+    private SparseIntArray mapId;
 
     public MasterFragment() {
         // Required empty public constructor
-    }
-
-    private void deselect() {
-
     }
 
     public interface Callbacks {
@@ -47,25 +45,31 @@ public class MasterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_master_user_null, container, false);
-        
+
         view.findViewById(R.id.appLogo).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {}
+            public void onClick(View v) {
+            }
         });
 
-        view.findViewById(R.id.events).setOnClickListener(new View.OnClickListener() {
+        mapId = new SparseIntArray();
+        mapId.put(1, R.id.events);
+        mapId.put(2, R.id.sigin);
+        mapId.put(3, R.id.contact_us);
+        mapId.put(4, R.id.more);
+
+        events = view.findViewById(R.id.events);
+        events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deselect();
-                TextView textView = v.findViewById(R.id.events_text);
-                textView.setTextColor(getResources().getColor(R.color.warning));
                 callbacks.onMasterItemClicked(1);
             }
         });
 
-        view.findViewById(R.id.sigin_in).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.sigin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                callbacks.onMasterItemClicked(2);
 
             }
         });
@@ -74,6 +78,7 @@ public class MasterFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                callbacks.onMasterItemClicked(3);
             }
         });
 
@@ -84,6 +89,7 @@ public class MasterFragment extends Fragment {
             }
         });
 
+        //TODO implement updateUi()
 //        view.findViewById(R.id.my_chats).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -106,4 +112,9 @@ public class MasterFragment extends Fragment {
         callbacks = null;
     }
 
+    public void updateUi(int elementSelected) {
+        ImageView ic = events.findViewById(R.id.events_ic);
+        TextView text = events.findViewById(R.id.events_text);
+
+    }
 }

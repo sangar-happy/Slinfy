@@ -1,9 +1,12 @@
 package com.example.challenge1.activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.challenge1.fragments.EventsFragment;
+import com.example.challenge1.fragments.LoginSignupFragment;
 import com.example.challenge1.fragments.MasterFragment;
+import com.example.challenge1.fragments.RealTimeDatabse;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +20,15 @@ import androidx.fragment.app.FragmentManager;
 import android.view.MenuItem;
 
 import com.example.challenge1.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class FragmentNavigationMain extends AppCompatActivity implements MasterFragment.Callbacks {
+public class FragmentNavigationMain extends AppCompatActivity implements MasterFragment.Callbacks, RealTimeDatabse.OnFragmentInteractionListener {
 
     private static final String TAG_MASTER_FRAGMENT = "TAG_MASTER_FRAGMENT";
     private static final String TAG_DETAIL_FRAGMENT = "TAG_DETAIL_FRAGMENT";
     private DrawerLayout drawerLayout;
+    private MasterFragment masterFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,23 +51,15 @@ public class FragmentNavigationMain extends AppCompatActivity implements MasterF
 
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
             toggle.syncState();
-            // setup menu icon
-//            final ActionBar actionBar = getSupportActionBar();
-//            if (actionBar != null) {
-//                actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
-//                actionBar.setDisplayHomeAsUpEnabled(true);
-//            }
         }
 
-        // insert event fragment into detail container
-        EventsFragment eventsFragment = EventsFragment.newInstance();
         FragmentManager fragmentManager = getSupportFragmentManager();
+        EventsFragment eventsFragment = new EventsFragment();
         fragmentManager.beginTransaction()
-                .add(R.id.frame_layout, eventsFragment, TAG_DETAIL_FRAGMENT)
+                .add(R.id.frame_layout, eventsFragment)
                 .commit();
 
-        // insert master fragment into master container (i.e. nav view)
-        MasterFragment masterFragment = new MasterFragment();
+        masterFragment = new MasterFragment();
         fragmentManager.beginTransaction()
                 .add(R.id.master_fragment_container, masterFragment, TAG_MASTER_FRAGMENT)
                 .commit();
@@ -81,13 +79,42 @@ public class FragmentNavigationMain extends AppCompatActivity implements MasterF
 
     @Override
     public void onMasterItemClicked(int masterItemId) {
-        EventsFragment eventsFragment = (EventsFragment) getSupportFragmentManager()
-                .findFragmentByTag(TAG_DETAIL_FRAGMENT);
-        eventsFragment.onMasterItemClicked(masterItemId);
+
+        masterFragment.updateUi(masterItemId);
+
+        switch (masterItemId) {
+            case 1:
+            EventsFragment eventsFragment = new EventsFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frame_layout, eventsFragment)
+                    .addToBackStack(null)
+                    .commit();
+            break;
+            case 2:
+                LoginSignupFragment loginSignupFragment = new LoginSignupFragment();
+                fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout, loginSignupFragment, TAG_DETAIL_FRAGMENT)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case 3:
+                RealTimeDatabse realTimeDatabse = new RealTimeDatabse();
+                fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.frame_layout, realTimeDatabse, TAG_DETAIL_FRAGMENT)
+                        .addToBackStack(null)
+                        .commit();
+                break;
+        }
 
         // Close the navigation drawer
         if (drawerLayout != null) {
             drawerLayout.closeDrawers();
         }
     }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {}
 }

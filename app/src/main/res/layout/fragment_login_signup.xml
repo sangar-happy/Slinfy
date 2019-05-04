@@ -5,25 +5,26 @@
 	android:id="@+id/scrollView2"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".fragments.UserLoginFragment">
+	tools:context=".fragments.LoginSignupFragment">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
 		android:layout_marginTop="@dimen/element_margin"
-		android:background="@color/colorPrimary_gray">
+		android:background="@color/colorNavBackground">
 
-		<Button
-			android:id="@+id/VerificationCode"
-			android:layout_width="wrap_content"
+		<com.google.android.gms.common.SignInButton
+			android:id="@+id/googleSignInButton"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginBottom="@dimen/element_margin"
-			android:background="@drawable/transparent_button"
-			android:text="Signup"
-			android:textColor="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@+id/adminId_layout"
+			android:layout_centerInParent="true"
+			android:visibility="visible"
+			android:layout_marginStart="@dimen/sides_margin"
+			android:layout_marginEnd="@dimen/sides_margin"
 			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 
 		<com.google.android.material.textfield.TextInputLayout
@@ -32,82 +33,94 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
-			android:textColorHint="@color/opaqueColor"
-			app:layout_constraintBottom_toTopOf="@+id/password_layout"
-			app:layout_constraintEnd_toEndOf="parent"
-
+			android:textColorHint="@color/colorPrimary_gray"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/verificationCode">
+			app:layout_constraintTop_toBottomOf="@id/googleSignInButton">
 
 			<com.google.android.material.textfield.TextInputEditText
-				android:id="@+id/username"
+				android:id="@+id/phone_number"
 				android:layout_width="match_parent"
 				android:layout_height="?android:listPreferredItemHeight"
-
-				android:hint="Username"
+				android:hint="Phone Number"
 				android:inputType="text"
 				android:maxLines="1"
-				android:textColor="@color/colorAccent" />
+				android:textColor="@color/colorPrimary_gray" />
 		</com.google.android.material.textfield.TextInputLayout>
 
 
 		<com.google.android.material.textfield.TextInputLayout
-			android:id="@+id/password_layout"
+			android:id="@+id/code_verification_layout"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
-			android:textColorHint="@color/opaqueColor"
-			app:layout_constraintBottom_toTopOf="@+id/forgotPassword"
-			app:layout_constraintEnd_toEndOf="parent"
+			android:textColorHint="@color/colorPrimary_gray"
 			app:layout_constraintStart_toStartOf="parent"
-
-			app:layout_constraintTop_toBottomOf="@id/adminId_layout"
-			app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorAccent">
+			app:layout_constraintTop_toBottomOf="@id/adminId_layout">
 
 			<com.google.android.material.textfield.TextInputEditText
-				android:id="@+id/password"
+				android:id="@+id/verification_code"
 				android:layout_width="match_parent"
 				android:layout_height="?android:listPreferredItemHeight"
 				android:layout_marginBottom="@dimen/element_margin"
 
-				android:hint="Password"
+				android:hint="Enter Code"
 				android:inputType="textPassword"
 				android:maxLines="1"
-				android:textColor="@color/colorAccent" />
+				android:textColor="@color/colorPrimary_gray" />
 		</com.google.android.material.textfield.TextInputLayout>
+
+		<!--<com.google.android.material.textfield.TextInputLayout-->
+			<!--android:id="@+id/password_layout"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="wrap_content"-->
+			<!--android:layout_marginStart="@dimen/sides_margin"-->
+			<!--android:layout_marginEnd="@dimen/sides_margin"-->
+			<!--android:textColorHint="@color/opaqueColor"-->
+			<!--app:passwordToggleEnabled="true"-->
+            <!--app:passwordToggleTint="@color/colorAccent"-->
+			<!--app:layout_constraintStart_toStartOf="parent"-->
+			<!--app:layout_constraintTop_toBottomOf="@id/adminId_layout">-->
+
+			<!--<com.google.android.material.textfield.TextInputEditText-->
+				<!--android:id="@+id/password"-->
+				<!--android:layout_width="match_parent"-->
+				<!--android:layout_height="?android:listPreferredItemHeight"-->
+				<!--android:layout_marginBottom="@dimen/element_margin"-->
+
+				<!--android:hint="Password"-->
+				<!--android:inputType="textPassword"-->
+				<!--android:maxLines="1"-->
+				<!--android:textColor="@color/colorAccent" />-->
+		<!--</com.google.android.material.textfield.TextInputLayout>-->
 
 		<Button
 			android:id="@+id/forgotPassword"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="@dimen/element_margin"
+			android:layout_marginEnd="15dp"
 			android:background="@drawable/transparent_button"
 			android:text="Forgot Password?"
 			android:textAllCaps="false"
 			android:padding="10dp"
 			android:textColor="@color/colorAccent"
-			app:layout_constraintBottom_toTopOf="@+id/login"
-			android:layout_marginEnd="@dimen/sides_margin"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/password_layout" />
+			app:layout_constraintTop_toBottomOf="@id/code_verification_layout"/>
 
 		<Button
-			android:id="@+id/login"
+			android:id="@+id/verify_code"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/sides_margin"
 			android:layout_marginEnd="@dimen/sides_margin"
 			android:layout_marginBottom="@dimen/element_margin"
 			android:background="@drawable/button"
-			android:text="Login"
+			android:text="Get Code"
 			android:textColor="@color/colorAccent"
-			app:layout_constraintBottom_toBottomOf="parent"
-
-			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
+			app:layout_constraintTop_toBottomOf="@id/forgotPassword"
+			/>
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

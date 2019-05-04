@@ -2,8 +2,6 @@ package com.example.challenge1.activities;
 
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -21,8 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.challenge1.R;
-import com.example.challenge1.fragments.BlankFragment;
-import com.example.challenge1.utils.ProgressBarUtil;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,7 +26,6 @@ import com.google.firebase.auth.UserInfo;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -140,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_events:
 
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragment_container, new BlankFragment());
+//                fragmentTransaction.add(R.id.fragment_container, new BlankFragment());
                 fragmentTransaction.commit();
                 break;
 

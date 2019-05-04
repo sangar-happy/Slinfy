@@ -36,10 +36,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.profileImage.setImageResource(userList.get(position).getProfilePic());
         holder.name.setText(userList.get(position).getName());
-        holder.message.setText(userList.get(position).getMessage());
-        holder.time.setText(userList.get(position).getTime());
+        holder.email.setText(userList.get(position).getEmail());
     }
 
     @Override
@@ -50,17 +48,12 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public CircleImageView profileImage;
-        public TextView name;
-        public TextView message;
-        public TextView time;
+        public TextView name, email;
 
         public ViewHolder(View view) {
             super(view);
-            profileImage = view.findViewById(R.id.profile_pic);
             name = view.findViewById(R.id.name);
-            message = view.findViewById(R.id.message);
-            time = view.findViewById(R.id.time);
+            email = view.findViewById(R.id.email);
         }
     }
 }

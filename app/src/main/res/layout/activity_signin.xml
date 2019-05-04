@@ -62,7 +62,7 @@
                 app:layout_constraintTop_toBottomOf="@id/heading" />
 
             <EditText
-                android:id="@+id/code"
+                android:id="@+id/code_verification"
                 android:layout_width="match_parent"
                 android:layout_height="?android:listPreferredItemHeight"
                 android:layout_marginStart="@dimen/sides_margin"
