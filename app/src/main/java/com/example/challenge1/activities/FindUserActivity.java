@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import com.example.challenge1.R;
 import com.example.challenge1.adapters.UserListAdapter;
@@ -53,7 +54,7 @@ public class FindUserActivity extends AppCompatActivity {
                 null, null, null, null
         );
 
-        while(contacts.moveToNext()) {
+        while (contacts.moveToNext()) {
             String name = contacts.getString(
                     contacts.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
             );
@@ -62,8 +63,9 @@ public class FindUserActivity extends AppCompatActivity {
                     contacts.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
             );
 
-            if(!String.valueOf(message.charAt(0)).equals("+")) {
+            if (!String.valueOf(message.charAt(0)).equals("+")) {
                 message = isoPrefix + message;
+                Log.d("hello", "Error");
             }
 
             User user = new User(name, message, "1:00 PM", R.mipmap.ic_launcher);
@@ -79,16 +81,21 @@ public class FindUserActivity extends AppCompatActivity {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
+                if (dataSnapshot.exists()) {
                     String message = "",
                             name = "";
+                    Log.d(
+                            "sdvvnlks", "bdsbfjebfejw"
+                    );
 
-                    for(DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                        if(childSnapshot.child("phone").getValue() != null) {
+                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                        if (childSnapshot.child("phone").getValue() != null) {
                             message = childSnapshot.child("phone").getValue().toString();
+                            Log.d("sjkfnjdf", "csbvjbks");
                         }
-                        if(childSnapshot.child("name").getValue() != null) {
+                        if (childSnapshot.child("name").getValue() != null) {
                             name = childSnapshot.child("name").getValue().toString();
+                            Log.d("sdjkjddsbfk", "ssvnbrjre");
                         }
 
                         User user = new User(name, message, "1:00 PM", R.mipmap.ic_launcher);
@@ -100,16 +107,19 @@ public class FindUserActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         });
     }
 
     private String getCountryISO() {
         String iso = null;
 
-        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);;
-        if(telephonyManager.getNetworkCountryIso() != null) {
-                iso = telephonyManager.getNetworkCountryIso();
+        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        ;
+        if (telephonyManager.getNetworkCountryIso() != null) {
+            iso = telephonyManager.getNetworkCountryIso();
+            Log.d("sjvakewojk", "nsjvdniewibe");
         }
         return Iso2Phone.getPhone(iso);
     }

@@ -6,40 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    >
+    tools:openDrawer="start"
+    tools:context=".activities.MainActivity">
 
-    <!--tools:openDrawer="start"-->
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <include
+        layout="@layout/content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary_gray"
-        android:orientation="vertical"
-        tools:context=".activities.MainActivity">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary_gray"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/Theme.AppCompat.Light" />
-
-
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/find_user"
-                android:text="Find User"/>
-
-        </FrameLayout>
-    </LinearLayout>
+        android:layout_height="match_parent" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -52,21 +25,3 @@
         app:itemTextColor="@color/nav_menu_selector"
         app:menu="@menu/user_drawer_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>
-
-
-    <!--<Button-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center_horizontal"-->
-    <!--android:background="@color/opaqueColor"-->
-    <!--android:onClick="googleSignin"-->
-    <!--android:text="Google Signin" />-->
-
-    <!--<com.google.android.material.tabs.TabLayout-->
-    <!--android:id="@+id/tab"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:background="@color/opaqueColor"-->
-    <!--app:tabIndicatorColor="@color/colorAccent"-->
-    <!--app:tabRippleColor="@color/colorAccent"-->
-    <!--app:tabTextColor="@color/colorAccent" />-->
