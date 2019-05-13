@@ -11,3 +11,4 @@
 .externalNativeBuild
 .aswb
 /app/google-services.json
+/.idea/caches/gradle_models.ser
