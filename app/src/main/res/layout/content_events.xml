@@ -14,7 +14,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:weightSum="2">
             <androidx.cardview.widget.CardView
-                android:id="@+id/birthday"
+                android:id="@+id/Birthday"
                 android:layout_width="185dp"
                 android:layout_height="155dp"
                 android:layout_margin="1dp"
@@ -137,7 +137,6 @@
                 app:layout_constraintTop_toBottomOf="@id/Anniversary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:cardBackgroundColor="@color/opaqueColor"
                 app:cardCornerRadius="3dp"
                 android:layout_weight="1">
 
@@ -221,7 +220,6 @@
             app:layout_constraintTop_toBottomOf="@id/Anniversary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:cardBackgroundColor="@color/opaqueColor"
             app:cardCornerRadius="3dp"
             android:layout_weight="1">
 
@@ -250,6 +248,9 @@
                     android:ellipsize="end"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+
+
     </LinearLayout>
         <!--<androidx.cardview.widget.CardView-->
         <!--android:id="@+id/marriage"-->

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.challenge1.fragments.EventsFragment;
 import com.example.challenge1.fragments.LoginSignupFragment;
 import com.example.challenge1.fragments.MasterFragment;
+import com.example.challenge1.fragments.NewEventFragment;
 import com.example.challenge1.fragments.RealTimeDatabse;
 import com.google.android.material.navigation.NavigationView;
 
@@ -23,7 +24,10 @@ import com.example.challenge1.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class FragmentNavigationMain extends AppCompatActivity implements MasterFragment.Callbacks, RealTimeDatabse.OnFragmentInteractionListener {
+public class FragmentNavigationMain extends AppCompatActivity implements
+        MasterFragment.Callbacks,
+        RealTimeDatabse.OnFragmentInteractionListener,
+        EventsFragment.EventsFragmentInteraction {
 
     private static final String TAG_MASTER_FRAGMENT = "TAG_MASTER_FRAGMENT";
     private static final String TAG_DETAIL_FRAGMENT = "TAG_DETAIL_FRAGMENT";
@@ -117,4 +121,14 @@ public class FragmentNavigationMain extends AppCompatActivity implements MasterF
 
     @Override
     public void onFragmentInteraction(Uri uri) {}
+
+    @Override
+    public void onFloatingButtonClicked() {
+        NewEventFragment newEventFragment = new NewEventFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.frame_layout, newEventFragment)
+                .addToBackStack(null)
+                .commit();
+    }
 }
