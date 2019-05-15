@@ -35,7 +35,7 @@
             android:textColor="@color/opaqueColor"/>
 
         <TextView
-            android:id="@+id/email"
+            android:id="@+id/phone_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"

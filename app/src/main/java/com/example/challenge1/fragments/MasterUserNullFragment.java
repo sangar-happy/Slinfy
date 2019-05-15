@@ -18,13 +18,13 @@ import com.example.challenge1.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MasterFragment extends Fragment {
+public class MasterUserNullFragment extends Fragment {
 
     private Callbacks callbacks;
     private View events;
     private SparseIntArray mapId;
 
-    public MasterFragment() {
+    public MasterUserNullFragment() {
         // Required empty public constructor
     }
 
@@ -89,7 +89,6 @@ public class MasterFragment extends Fragment {
             }
         });
 
-        //TODO implement updateUi()
 //        view.findViewById(R.id.my_chats).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -112,9 +111,4 @@ public class MasterFragment extends Fragment {
         callbacks = null;
     }
 
-    public void updateUi(int elementSelected) {
-        ImageView ic = events.findViewById(R.id.events_ic);
-        TextView text = events.findViewById(R.id.events_text);
-
-    }
 }
