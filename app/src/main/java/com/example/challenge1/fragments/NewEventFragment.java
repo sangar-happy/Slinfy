@@ -31,19 +31,6 @@ public class NewEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_event, container, false);
 
-        Spinner spinner = view.findViewById(R.id.event_type);
-        submit = view.findViewById(R.id.submit);
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        String [] events = {"Birthday", "Marriage", "Anniversary", "Home Warming", "Engagement", "Graduation"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.support_simple_spinner_dropdown_item, events);
-        spinner.setAdapter(adapter);
-
         // Inflate the layout for this fragment
         return view;
     }
