@@ -41,6 +41,8 @@ import androidx.fragment.app.Fragment;
  */
 public class LoginSignupFragment extends Fragment implements View.OnClickListener {
 
+    private Callbacks fragmentCallbacks;
+
     private Button verifyCode;
     private TextInputEditText phoneNumber, verificationCode;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
@@ -96,6 +98,11 @@ public class LoginSignupFragment extends Fragment implements View.OnClickListene
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+        if (!(context instanceof Callbacks)) {
+            throw new RuntimeException("Context must implement callbacks");
+        }
+        fragmentCallbacks = (Callbacks) context;
+
         FirebaseApp.initializeApp(context);
         userLoggedIn();
 
@@ -105,6 +112,10 @@ public class LoginSignupFragment extends Fragment implements View.OnClickListene
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(context, gso);
+    }
+
+    public interface Callbacks {
+        void updateUser(FirebaseUser user);
     }
 
     private void startPhoneNumberVerification() {
@@ -164,12 +175,13 @@ public class LoginSignupFragment extends Fragment implements View.OnClickListene
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         Log.d(TAG, "Checking if user is logged in");
         if(user != null) {
-            //start new activity
-            //TODO send message to main activity to update UI
+            //send message to main activity to update UI
             Toast.makeText(getContext(), "User Identified", Toast.LENGTH_SHORT).show();
+
         } else {
             Log.d(TAG, "User is not logged in");
         }
+        fragmentCallbacks.updateUser(user);
     }
 
     @Override

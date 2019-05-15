@@ -12,13 +12,12 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
+public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.ViewHolder> {
 
     ArrayList<User> userList;
 
-    public UserListAdapter(ArrayList<User> userList) {
+    public ContactListAdapter(ArrayList<User> userList) {
         this.userList = userList;
     }
 
@@ -37,7 +36,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(userList.get(position).getName());
-        holder.email.setText(userList.get(position).getEmail());
+        holder.phone_number.setText(userList.get(position).getEmail());
     }
 
     @Override
@@ -48,12 +47,12 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView name, email;
+        public TextView name, phone_number;
 
         public ViewHolder(View view) {
             super(view);
             name = view.findViewById(R.id.name);
-            email = view.findViewById(R.id.email);
+            phone_number = view.findViewById(R.id.phone_number);
         }
     }
 }
