@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".activities.MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
     <include
         layout="@layout/content_main"
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/colorNavBackground"
+        android:background="@color/colorAccent"
         app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/nav_menu_selector"
         app:itemTextColor="@color/nav_menu_selector"
