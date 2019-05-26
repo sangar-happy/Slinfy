@@ -16,4 +16,6 @@
     <string name="home_warming">Home Warming</string>
     <string name="engagement">Engagement</string>
     <string name="graduation">Graduation</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="phone_number">Phone Number</string>
 </resources>

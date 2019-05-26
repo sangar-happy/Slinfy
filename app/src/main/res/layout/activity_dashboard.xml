@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DashboardActivity">
+    tools:context=".ui.activity.DashboardActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/dashboardAppBarLayout"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             app:tabGravity="fill"
             app:tabMode="fixed"
-            android:background="@color/colorPrimary_blue"
+            android:background="@color/colorPrimary"
             app:tabTextColor="@color/colorAccent" />
 
     </com.google.android.material.appbar.AppBarLayout>

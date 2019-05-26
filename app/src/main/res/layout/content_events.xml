@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.EventsFragment">
+    tools:context=".ui.fragment.EventsFragment">
 
         <LinearLayout
             android:id="@+id/list1"

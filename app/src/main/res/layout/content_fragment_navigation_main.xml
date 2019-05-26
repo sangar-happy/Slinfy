@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activities.FragmentNavigationMain"
+    tools:context=".ui.activity.FragmentNavigationMain"
     tools:showIn="@layout/activity_fragment_navigation_main">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary_gray"
+        android:textColor="@color/colorPrimary"
         android:text="Hello"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
