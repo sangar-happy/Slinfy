@@ -1,10 +1,6 @@
 package com.example.challenge1.ui.fragment;
 
-<<<<<<< HEAD:app/src/main/java/com/example/challenge1/fragments/LoadContactsFragment.java
-=======
-
 import android.Manifest;
->>>>>>> ca519be1ae6515955bf8c1fb5c2ec29749e91172:app/src/main/java/com/example/challenge1/ui/fragment/LoadContactsFragment.java
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;

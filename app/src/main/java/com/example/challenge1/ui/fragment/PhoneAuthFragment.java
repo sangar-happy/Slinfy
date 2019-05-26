@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.challenge1.R;
+import com.example.challenge1.ViewModifier;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -39,30 +40,32 @@ import androidx.fragment.app.Fragment;
 public class PhoneAuthFragment extends Fragment implements View.OnClickListener {
 
     private Callbacks fragmentCallbacks;
+    private ViewModifier viewModifier;
 
     private Button verifyCode;
-    private TextInputEditText phoneNumber, verificationCode;
+    private TextInputEditText phoneNumber, otp, getName;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
-    private String verificationID;
+    private String sentOtp;
 
-	private static final String TAG = "PhoneAuthFragment";
+    private static final String TAG = "PhoneAuthFragment";
 
-	public PhoneAuthFragment() {
-		// Required empty public constructor
-	}
+    public PhoneAuthFragment() {
+        // Required empty public constructor
+    }
 
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
-		View view = inflater.inflate(R.layout.fragment_phone_auth, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_phone_auth, container, false);
 
-		verifyCode = view.findViewById(R.id.verify_code);
+        verifyCode = view.findViewById(R.id.verify_code);
         verifyCode.setOnClickListener(this);
 
-		phoneNumber = view.findViewById(R.id.phone_number);
-		verificationCode = view.findViewById(R.id.verification_code);
+        phoneNumber = view.findViewById(R.id.phone_number);
+        otp = view.findViewById(R.id.otp);
+        getName = view.findViewById(R.id.name);
 
         callbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
@@ -71,18 +74,19 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
             }
 
             @Override
-            public void onVerificationFailed(FirebaseException e) {}
+            public void onVerificationFailed(FirebaseException e) {
+            }
 
             @Override
             public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 super.onCodeSent(s, forceResendingToken);
-                verificationID = s;
-                verifyCode.setText("Verify Code");
+                sentOtp = s;
+                verifyCode.setText("Verify");
             }
         };
 
-		return view;
-	}
+        return view;
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -91,6 +95,9 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
             throw new RuntimeException("Context must implement callbacks");
         }
         fragmentCallbacks = (Callbacks) context;
+
+        viewModifier = (ViewModifier) context;
+        viewModifier.setTitleInterface(getString(R.string.login));
 
         FirebaseApp.initializeApp(context);
         userLoggedIn();
@@ -101,9 +108,9 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
     }
 
     private void startPhoneNumberVerification() {
-        String number = phoneNumber.getText().toString();
+        String number = "+91" + phoneNumber.getText().toString();
 
-        if(number.length() != 0) {
+        if (phoneNumber.length() == 10) {
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
                     number,
                     60,
@@ -111,7 +118,7 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
                     getActivity(),
                     callbacks);
         } else {
-            Toast.makeText(getActivity(), "Enter a phone number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Enter valid number", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -119,18 +126,18 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
         FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
                     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                    if(user != null) {
+                    if (user != null) {
                         final DatabaseReference usersDbReference = FirebaseDatabase.getInstance().getReference().child("user").child(user.getUid());
                         usersDbReference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                if(!dataSnapshot.exists()) {
+                                if (!dataSnapshot.exists()) {
                                     Map<String, Object> userMap = new HashMap<>();
                                     userMap.put("phone", user.getPhoneNumber());
-                                    userMap.put("name", user.getDisplayName());
+                                    userMap.put("name", getName.getText().toString());
 
                                     usersDbReference.updateChildren(userMap);
                                 }
@@ -138,7 +145,8 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
                             }
 
                             @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {}
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
                         });
                     }
 
@@ -148,15 +156,18 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
     }
 
     private void verifyPhoneNumberWithCode() {
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationID, verificationCode.getText().toString());
-        signInWithPhoneAuthCredential(credential);
-
+        if (otp != null && otp.getText().length() == 6) {
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(sentOtp, otp.getText().toString());
+            signInWithPhoneAuthCredential(credential);
+        } else {
+            Toast.makeText(getContext(), "Enter Otp", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void userLoggedIn() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         Log.d(TAG, "Checking if user is logged in");
-        if(user != null) {
+        if (user != null) {
             //send message to main activity to update UI
             Toast.makeText(getContext(), "User Identified", Toast.LENGTH_SHORT).show();
 
@@ -170,10 +181,15 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.verify_code:
-                if(verificationID != null)
+                if (sentOtp != null)
                     verifyPhoneNumberWithCode();
+                else if (getName.getText().length() == 0) {
+                    Toast.makeText(getContext(), "Name is required.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (phoneNumber != null) startPhoneNumberVerification();
                 else
-                    startPhoneNumberVerification();
+                    Toast.makeText(getContext(), "Phone number required.", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

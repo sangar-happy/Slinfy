@@ -20,14 +20,16 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/appLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/fun_o_public1" />
 
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
                 android:layout_toEndOf="@id/appLogo"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textColor="@color/colorAccent"

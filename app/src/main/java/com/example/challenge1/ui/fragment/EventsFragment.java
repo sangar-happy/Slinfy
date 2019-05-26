@@ -17,8 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.challenge1.R;
+import com.example.challenge1.ViewModifier;
 import com.example.challenge1.database.entity.Event;
-import com.example.challenge1.ui.activity.ViewModifier;
 import com.example.challenge1.ui.adapter.EventAdapter;
 import com.example.challenge1.viewmodel.EventViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

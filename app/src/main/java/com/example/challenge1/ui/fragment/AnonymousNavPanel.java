@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.challenge1.R;
-import com.example.challenge1.ui.activity.ViewModifier;
 
 /**
  * A simple {@link Fragment} subclass.

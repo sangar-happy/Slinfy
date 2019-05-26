@@ -10,8 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.challenge1.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +32,8 @@ public class UserNavPanel extends Fragment implements View.OnClickListener {
             editProfile,
             contactUs,
             more;
+    private TextView userName;
+    private String getName;
 
     @Override
     public void onAttach(Context context) {
@@ -32,6 +42,7 @@ public class UserNavPanel extends Fragment implements View.OnClickListener {
             throw new RuntimeException("Context must implement callbacks");
         }
         callbacks = (Callbacks) context;
+        getAllUsersFromFirebase();
     }
 
 
@@ -63,6 +74,8 @@ public class UserNavPanel extends Fragment implements View.OnClickListener {
         more = view.findViewById(R.id.more);
         more.setOnClickListener(this);
 
+        userName = view.findViewById(R.id.user_name);
+
         return view;
     }
 
@@ -91,5 +104,28 @@ public class UserNavPanel extends Fragment implements View.OnClickListener {
     public void onDetach() {
         super.onDetach();
         callbacks = null;
+    }
+
+    public void getAllUsersFromFirebase() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
+
+        Query query = reference.child("users").equalTo(FirebaseAuth.getInstance().getUid());
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                         getName = issue.getValue().toString();
+                         userName.setText(getName);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.example.challenge1.ViewModifier;
 import com.example.challenge1.ui.fragment.EventsFragment;
 import com.example.challenge1.ui.fragment.PhoneAuthFragment;
 import com.example.challenge1.ui.fragment.UserNavPanel;
@@ -23,7 +24,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.challenge1.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,7 +35,8 @@ public class FragmentNavigationMain extends AppCompatActivity
         AnonymousNavPanel.Callbacks,
         RealTimeDatabse.OnFragmentInteractionListener,
         PhoneAuthFragment.Callbacks,
-        EventsFragment.EventsFragmentInteraction {
+        EventsFragment.EventsFragmentInteraction,
+        ViewModifier {
 
 
     private FirebaseUser user;
@@ -299,4 +300,8 @@ public class FragmentNavigationMain extends AppCompatActivity
         return getSupportFragmentManager().findFragmentByTag(tag);
     }
 
+    @Override
+    public void setTitleInterface(String title) {
+        setTitle(title);
+    }
 }
