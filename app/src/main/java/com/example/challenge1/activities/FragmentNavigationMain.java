@@ -9,6 +9,7 @@ import com.example.challenge1.fragments.LoadContactsFragment;
 import com.example.challenge1.fragments.LoginSignupFragment;
 import com.example.challenge1.fragments.MasterUserFragment;
 import com.example.challenge1.fragments.MasterUserNullFragment;
+import com.example.challenge1.fragments.NewEventFragment;
 import com.example.challenge1.fragments.RealTimeDatabse;
 import com.google.android.material.navigation.NavigationView;
 
@@ -35,7 +36,8 @@ public class FragmentNavigationMain extends AppCompatActivity
         MasterUserFragment.Callbacks,
         MasterUserNullFragment.Callbacks,
         RealTimeDatabse.OnFragmentInteractionListener,
-        LoginSignupFragment.Callbacks {
+        LoginSignupFragment.Callbacks,
+        EventsFragment.EventsFragmentInteraction {
 
 
     private FirebaseUser user;
@@ -44,7 +46,6 @@ public class FragmentNavigationMain extends AppCompatActivity
     private DrawerLayout drawerLayout;
     private MasterUserNullFragment masterUserNullFragment;
     private MasterUserFragment masterUserFragment;
-    private LoadContactsFragment loadContactsFragment;
     private FragmentManager fragmentManager;
     private Toolbar toolbar;
 
@@ -63,6 +64,13 @@ public class FragmentNavigationMain extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .replace(R.id.master_fragment_container, masterUserNullFragment, TAG_MASTER_FRAGMENT)
+                    .commit();
+
+            LoadContactsFragment loadContactsFragment = new LoadContactsFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .replace(R.id.frame_layout, loadContactsFragment)
                     .commit();
             //TODO: hide the options menu
 
@@ -145,8 +153,8 @@ public class FragmentNavigationMain extends AppCompatActivity
 
         backStackCount--;
 
-        if(backStackCount < 1){
-            //Toast.makeText(this, "Press again to exit.", Toast.LENGTH_SHORT).show();
+        if(backStackCount <= 0){
+            //Toast.makeText(this, "Press again to exit.", Toast.LENGTH_ SHORT).show();
             new AlertDialog.Builder(this)
                     .setCancelable(false)
                     .setTitle("Exiting the app..")
@@ -160,7 +168,7 @@ public class FragmentNavigationMain extends AppCompatActivity
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface arg0, int arg1) {
-                            FragmentNavigationMain.super.onBackPressed();
+                            finish();
                         }
                     }).create().show();
         } else {
@@ -223,5 +231,17 @@ public class FragmentNavigationMain extends AppCompatActivity
     @Override
     public void onMasterUserItemClicked(int masterItemId) {
 
+    }
+
+    @Override
+    public void onFloatingButtonClicked() {
+        backStackCount++;
+        NewEventFragment NewEventFragment = new NewEventFragment();
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .replace(R.id.frame_layout, NewEventFragment, TAG_DETAIL_FRAGMENT)
+                .addToBackStack(null)
+                .commit();
     }
 }

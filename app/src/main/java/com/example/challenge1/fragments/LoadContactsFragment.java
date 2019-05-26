@@ -1,6 +1,5 @@
 package com.example.challenge1.fragments;
 
-
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -42,10 +41,17 @@ public class LoadContactsFragment extends Fragment {
 
         contactsArrayList = new ArrayList<>();
 
-        recyclerView = container.findViewById(R.id.contactsRecyclerView);
+        View v = inflater.inflate(R.layout.fragment_load_contacts, container, false);
+
+        recyclerView = v.findViewById(R.id.contactsRecyclerView);
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        contactListAdapter = new ContactListAdapter(contactsArrayList);
+        recyclerView.setAdapter(contactListAdapter);
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_load_contacts, container, false);
+        return v;
     }
 
     @Override
@@ -56,12 +62,6 @@ public class LoadContactsFragment extends Fragment {
     }
 
     private void initializeRecyclerView(Context context) {
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setHasFixedSize(false);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        contactListAdapter = new ContactListAdapter(contactsArrayList);
-        recyclerView.setAdapter(contactListAdapter);
     }
     private void getContactList() {
 
