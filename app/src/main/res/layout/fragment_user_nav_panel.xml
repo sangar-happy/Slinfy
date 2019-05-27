@@ -32,11 +32,11 @@
                 android:layout_alignParentBottom="true"
                 android:layout_toEndOf="@id/appLogo"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textColor="@color/colorAccent"
+                android:textColor="@android:color/white"
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:paddingStart="20dp"
-                android:text="@string/user_name"/>
+                android:text="Vinay"/>
         </RelativeLayout>
 
         <RelativeLayout
