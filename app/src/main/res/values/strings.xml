@@ -21,4 +21,9 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="phone_number">Phone Number</string>
     <string name="title_activity_set_event_params">SetEventParams</string>
+
+    <string-array name="spinner_list">
+        <item>Self</item>
+        <item>Organizer</item>
+    </string-array>
 </resources>

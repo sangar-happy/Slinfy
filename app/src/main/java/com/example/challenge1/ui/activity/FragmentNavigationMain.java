@@ -285,7 +285,7 @@ public class FragmentNavigationMain extends AppCompatActivity
 
         // add CreateEventFragment only if user is logged in
         // TODO: hide FAB for anonymous user
-        if(user != null) {
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             CreateEventFragment createEventFragment = new CreateEventFragment();
             mFragmentManager = getSupportFragmentManager();
             mFragmentManager.beginTransaction()

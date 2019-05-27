@@ -89,6 +89,8 @@
             android:layout_marginEnd="@dimen/sides_margin"
             app:layout_goneMarginTop="@dimen/element_margin"
             android:background="@drawable/button"
+
+            android:textColor="@android:color/white"
             android:text="Get OTP"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/otp_layout" />
