@@ -11,8 +11,6 @@ public class Event {
     @ColumnInfo(name = "category")
     private String eventCategory;
 
-    @NonNull
-    @PrimaryKey
     @ColumnInfo(name = "date")
     private String date;
 

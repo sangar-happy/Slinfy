@@ -33,8 +33,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     public void onBindViewHolder(@NonNull EventHolder holder, int position) {
         Event currentNote = allEvents.get(position);
         holder.title.setText(currentNote.getEventCategory());
-        //holder.timing.setText(currentNote.getEventDate());
-        holder.right_arrow.setImageResource(R.drawable.ic_arrow_right);
+        holder.timing.setText(currentNote.getDate());
     }
 
     @Override
@@ -51,13 +50,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
 
         TextView title
                 , timing;
-        ImageView right_arrow;
 
         public EventHolder(@NonNull View itemView) {
             super(itemView);
             this.title = itemView.findViewById(R.id.category);
             this.timing = itemView.findViewById(R.id.timing);
-            this.right_arrow = itemView.findViewById(R.id.right_arrow);
         }
     }
 }

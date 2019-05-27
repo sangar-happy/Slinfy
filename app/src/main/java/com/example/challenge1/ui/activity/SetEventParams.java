@@ -71,8 +71,4 @@ public class SetEventParams extends AppCompatActivity {
         dataRepository.insertEvent(event);
     }
 
-    public LiveData<List<Event>> getAllEvents() {
-        return allEvents;
-    }
-
 }
