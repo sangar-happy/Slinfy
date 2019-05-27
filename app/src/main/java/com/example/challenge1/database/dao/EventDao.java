@@ -17,14 +17,14 @@ public interface EventDao {
     @Insert
     void insertEvent(Event event);
 
-    @Update
-    void updateEvent(Event event);
-
-    @Delete
-    void deleteEvent(Event event);
-
-    @Query("DELETE FROM event_table")
-    void deleteAllEvents();
+//    @Update
+//    void updateEvent(Event event);
+//
+//    @Delete
+//    void deleteEvent(Event event);
+//
+//    @Query("DELETE FROM event_table")
+//    void deleteAllEvents();
 
     @Query("SELECT * FROM event_table")
     LiveData<List<Event>> getAllEvents();

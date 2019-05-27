@@ -32,18 +32,6 @@ public class DataRepository {
         new InsertEventAsyncTask(eventDao).execute(event);
     }
 
-    public void updateEvent(Event event) {
-        new UpdateEventAsyncTask(eventDao).execute(event);
-    }
-
-    public void deleteEvent(Event event) {
-        new DeleteEventAsyncTask(eventDao).execute(event);
-    }
-
-    public void deleteAllEvents() {
-        new DeleteAllEventsAsyncTask(eventDao).execute();
-    }
-
     public LiveData<List<Event>> getAllEvents() {
         return allEvents;
     }
@@ -58,61 +46,9 @@ public class DataRepository {
         @Override
         protected Void doInBackground(Event... events) {
             eventDao.insertEvent(events[0]);
-
-
-            DatabaseReference usersDbRef = FirebaseDatabase.getInstance().getReference().child("users");
-
-            usersDbRef.child("name").setValue("harpreet").addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    //if(task.isSuccessful()) Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
-                    //else Toast.makeText(getContext(), "Unccessful", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-
             return null;
         }
     }
 
-    private static class UpdateEventAsyncTask extends AsyncTask<Event, Void, Void> {
-        private EventDao eventDao;
 
-        public UpdateEventAsyncTask(EventDao eventDao) {
-            this.eventDao = eventDao;
-        }
-
-        @Override
-        protected Void doInBackground(Event... events) {
-            eventDao.updateEvent(events[0]);
-            return null;
-        }
-    }
-    private static class DeleteEventAsyncTask extends AsyncTask<Event, Void, Void> {
-        private EventDao eventDao;
-
-        public DeleteEventAsyncTask(EventDao eventDao) {
-            this.eventDao = eventDao;
-        }
-
-        @Override
-        protected Void doInBackground(Event... events) {
-            eventDao.deleteEvent(events[0]);
-            return null;
-        }
-    }
-
-    private static class DeleteAllEventsAsyncTask extends AsyncTask<Void, Void, Void> {
-        private EventDao eventDao;
-
-        public DeleteAllEventsAsyncTask(EventDao eventDao) {
-            this.eventDao = eventDao;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            eventDao.deleteAllEvents();
-            return null;
-        }
-    }
 }

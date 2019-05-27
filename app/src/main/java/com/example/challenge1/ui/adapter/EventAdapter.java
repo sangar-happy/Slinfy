@@ -32,9 +32,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     @Override
     public void onBindViewHolder(@NonNull EventHolder holder, int position) {
         Event currentNote = allEvents.get(position);
-        holder.profile_pic.setImageResource(R.mipmap.ic_launcher);
         holder.title.setText(currentNote.getEventCategory());
-        holder.timing.setText(currentNote.getEventTitle());
+        //holder.timing.setText(currentNote.getEventDate());
         holder.right_arrow.setImageResource(R.drawable.ic_arrow_right);
     }
 
@@ -50,15 +49,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
 
     class EventHolder extends RecyclerView.ViewHolder {
 
-        CircleImageView profile_pic;
         TextView title
                 , timing;
         ImageView right_arrow;
 
         public EventHolder(@NonNull View itemView) {
             super(itemView);
-            this.profile_pic = itemView.findViewById(R.id.profile_pic);
-            this.title = itemView.findViewById(R.id.title);
+            this.title = itemView.findViewById(R.id.category);
             this.timing = itemView.findViewById(R.id.timing);
             this.right_arrow = itemView.findViewById(R.id.right_arrow);
         }

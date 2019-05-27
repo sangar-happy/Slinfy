@@ -23,7 +23,7 @@
     <string name="title_activity_set_event_params">SetEventParams</string>
 
     <string-array name="spinner_list">
-        <item>Self</item>
         <item>Organizer</item>
+        <item>Self</item>
     </string-array>
 </resources>

@@ -134,7 +134,7 @@
 
         <Button
 
-            android:id="@+id/verify_code"
+            android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/element_margin"

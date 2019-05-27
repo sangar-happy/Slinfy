@@ -11,7 +11,7 @@ import com.example.challenge1.ui.fragment.PhoneAuthFragment;
 import com.example.challenge1.ui.fragment.UserNavPanel;
 import com.example.challenge1.ui.fragment.AnonymousNavPanel;
 import com.example.challenge1.ui.fragment.CreateEventFragment;
-import com.example.challenge1.ui.fragment.RealTimeDatabse;
+//import com.example.challenge1.ui.fragment.RealTimeDatabse;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -35,7 +35,7 @@ public class FragmentNavigationMain extends AppCompatActivity
         implements
         UserNavPanel.Callbacks,
         AnonymousNavPanel.Callbacks,
-        RealTimeDatabse.OnFragmentInteractionListener,
+        //RealTimeDatabse.OnFragmentInteractionListener,
         PhoneAuthFragment.Callbacks,
         EventsFragment.EventsFragmentInteraction,
         ViewModifier,
@@ -254,13 +254,13 @@ public class FragmentNavigationMain extends AppCompatActivity
                 break;
 
             case 3:
-                RealTimeDatabse realTimeDatabse = new RealTimeDatabse();
-                mFragmentManager = getSupportFragmentManager();
-                mFragmentManager.beginTransaction()
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .replace(R.id.frame_layout, realTimeDatabse, "TEST")
-                        .addToBackStack("TEST")
-                        .commit();
+//                RealTimeDatabse realTimeDatabse = new RealTimeDatabse();
+//                mFragmentManager = getSupportFragmentManager();
+//                mFragmentManager.beginTransaction()
+//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//                        .replace(R.id.frame_layout, realTimeDatabse, "TEST")
+//                        .addToBackStack("TEST")
+//                        .commit();
                 break;
         }
 
@@ -271,9 +271,9 @@ public class FragmentNavigationMain extends AppCompatActivity
 
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-    }
+//    @Override
+//    public void onFragmentInteraction(Uri uri) {
+//    }
 
     @Override
     public void updateUser(FirebaseUser user) {
