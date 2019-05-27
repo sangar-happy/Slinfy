@@ -46,9 +46,13 @@ public abstract class Database extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            eventDao.insertEvent(new Event("Hello", "Birthday"));
-            eventDao.insertEvent(new Event("World", "Birthday"));
-            eventDao.insertEvent(new Event("I'm Harpreet", "Birthday"));
+            eventDao.insertEvent(new Event("Birthday", "Harpreet"));
+            eventDao.insertEvent(new Event("Marriage", "Vinay"));
+            eventDao.insertEvent(new Event("Marriage", "Vishal"));
+            eventDao.insertEvent(new Event("Home Warming", "Dawinder"));
+            eventDao.insertEvent(new Event("Graduation", "Narinder"));
+            eventDao.insertEvent(new Event("Marriage", "Kamal"));
+            eventDao.insertEvent(new Event("Marriage", "Vishal"));
             return null;
         }
     }

@@ -1,6 +1,7 @@
 package com.example.challenge1.ui.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.challenge1.R;
+import com.example.challenge1.ViewModifier;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,10 +27,27 @@ public class CreateEventFragment extends Fragment implements View.OnClickListene
             , homeWarming
             , engagement
             , graduation;
-
+    private Callbacks callbacks;
+    private ViewModifier viewModifier;
 
     public CreateEventFragment() {
         // Required empty public constructor
+    }
+
+    public interface Callbacks {
+        void onEventItemClicked(String Event);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (!(context instanceof AnonymousNavPanel.Callbacks)) {
+            throw new RuntimeException("Context must implement Callbacks");
+        }
+
+        callbacks = (CreateEventFragment.Callbacks) context;
+        viewModifier = (ViewModifier) context;
+        viewModifier.setTitleInterface(getString(R.string.event_type));
     }
 
 
@@ -62,27 +81,27 @@ public class CreateEventFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.birthday:
-
+                callbacks.onEventItemClicked("Birthday");
                 break;
 
             case R.id.marriage:
-
+                callbacks.onEventItemClicked("Marriage");
                 break;
 
             case R.id.anniversary:
-
+                callbacks.onEventItemClicked("Anniversary");
                 break;
 
             case R.id.home_warming:
-
+                callbacks.onEventItemClicked("Home Warming");
                 break;
 
             case R.id.engagement:
-
+                callbacks.onEventItemClicked("Engagement");
                 break;
 
             case R.id.graduation:
-
+                callbacks.onEventItemClicked("Graduation");
                 break;
         }
     }

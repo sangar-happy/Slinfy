@@ -34,7 +34,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
         Event currentNote = allEvents.get(position);
         holder.profile_pic.setImageResource(R.mipmap.ic_launcher);
         holder.title.setText(currentNote.getEventCategory());
-        holder.timing.setText(currentNote.getEventCategory());
+        holder.timing.setText(currentNote.getEventTitle());
         holder.right_arrow.setImageResource(R.drawable.ic_arrow_right);
     }
 

@@ -1,6 +1,7 @@
 package com.example.challenge1.ui.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -24,6 +25,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.challenge1.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,7 +38,8 @@ public class FragmentNavigationMain extends AppCompatActivity
         RealTimeDatabse.OnFragmentInteractionListener,
         PhoneAuthFragment.Callbacks,
         EventsFragment.EventsFragmentInteraction,
-        ViewModifier {
+        ViewModifier,
+        CreateEventFragment.Callbacks{
 
 
     private FirebaseUser user;
@@ -282,13 +285,17 @@ public class FragmentNavigationMain extends AppCompatActivity
 
         // add CreateEventFragment only if user is logged in
         // TODO: hide FAB for anonymous user
-        CreateEventFragment createEventFragment = new CreateEventFragment();
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentManager.beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .replace(R.id.frame_layout, createEventFragment, TAG_CREATE_EVENT_FRAGMENT)
-                .addToBackStack(null)
-                .commit();
+        if(user != null) {
+            CreateEventFragment createEventFragment = new CreateEventFragment();
+            mFragmentManager = getSupportFragmentManager();
+            mFragmentManager.beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .replace(R.id.frame_layout, createEventFragment, TAG_CREATE_EVENT_FRAGMENT)
+                    .addToBackStack(null)
+                    .commit();
+        } else {
+            Toast.makeText(this, "Must Signin to create Event.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // TODO: update nav panel according to the current fragment visible
@@ -303,5 +310,12 @@ public class FragmentNavigationMain extends AppCompatActivity
     @Override
     public void setTitleInterface(String title) {
         setTitle(title);
+    }
+
+    @Override
+    public void onEventItemClicked(String event) {
+        Intent intent = new Intent(this, SetEventParams.class);
+        intent.putExtra("eventType", event);
+        startActivity(intent);
     }
 }
