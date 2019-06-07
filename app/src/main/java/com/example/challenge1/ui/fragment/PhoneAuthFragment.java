@@ -110,7 +110,7 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
     private void startPhoneNumberVerification() {
         String number = "+91" + phoneNumber.getText().toString();
 
-        if (phoneNumber.length() == 10) {
+        if (phoneNumber != null) {
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
                     number,
                     60,
@@ -130,7 +130,7 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
                     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (user != null) {
-                        final DatabaseReference usersDbReference = FirebaseDatabase.getInstance().getReference().child("user").child(user.getUid());
+                        final DatabaseReference usersDbReference = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
                         usersDbReference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

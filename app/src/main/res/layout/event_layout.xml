@@ -26,35 +26,35 @@
             android:id="@+id/category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category"
-            android:layout_marginStart="8dp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_toStartOf="@+id/right_arrow"
+            android:layout_marginStart="67dp"
             android:layout_toEndOf="@+id/profile_pic"
-            android:textColor="@color/colorAccent"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+            android:ellipsize="end"
+            android:maxLines="2"
 
+            android:text="Category"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorAccent" />
+        <!--android:layout_toStartOf="@+id/right_arrow"-->
         <TextView
-            android:id="@+id/timing"
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
-            android:maxLines="1"
-            android:layout_marginStart="10dp"
-            android:ellipsize="end"
-            android:layout_toEndOf="@id/profile_pic"
             android:layout_below="@+id/category"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="89dp"
+            android:layout_marginTop="22dp"
+            android:layout_toEndOf="@id/profile_pic"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Date"
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
-            android:text="Timing" />
+            android:textColor="@color/colorAccent" />
 
-        <ImageView
-            android:id="@+id/right_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_right" />
+        <!--<ImageView-->
+            <!--android:id="@+id/right_arrow"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:src="@drawable/ic_arrow_right" />-->
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

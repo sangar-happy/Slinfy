@@ -5,6 +5,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+
+import java.util.Date;
+
 @Entity(tableName = "event_table")
 public class Event {
 
@@ -12,19 +15,29 @@ public class Event {
     private String eventCategory;
 
     @ColumnInfo(name = "date")
-    private String date;
+    private String eventDate;
 
-    public Event(String eventCategory, String date) {
+    @NonNull
+    @PrimaryKey
+    @ColumnInfo(name = "id")
+    private String eventId;
+
+    public Event(String eventCategory, String eventDate, @NonNull String eventId) {
         this.eventCategory = eventCategory;
-        this.date = date;
+        this.eventDate = eventDate;
+        this.eventId = eventId;
     }
 
     public String getEventCategory() {
         return eventCategory;
     }
 
-    public String getDate() {
-        return date;
+    public String getEventDate() {
+        return eventDate;
     }
 
+    @NonNull
+    public String getEventId() {
+        return eventId;
+    }
 }

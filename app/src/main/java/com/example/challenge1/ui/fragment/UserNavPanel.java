@@ -62,8 +62,8 @@ public class UserNavPanel extends Fragment implements View.OnClickListener {
         events = view.findViewById(R.id.events);
         events.setOnClickListener(this);
 
-        myChats = view.findViewById(R.id.my_chats);
-        myChats.setOnClickListener(this);
+//        myChats = view.findViewById(R.id.my_chats);
+//        myChats.setOnClickListener(this);
 
         editProfile = view.findViewById(R.id.edit_profile);
         editProfile.setOnClickListener(this);
@@ -85,9 +85,9 @@ public class UserNavPanel extends Fragment implements View.OnClickListener {
             case R.id.events:
                 callbacks.onUserNavPanelItemClicked(1);
                 break;
-            case R.id.my_chats:
-                callbacks.onUserNavPanelItemClicked(2);
-                break;
+//            case R.id.my_chats:
+//                callbacks.onUserNavPanelItemClicked(2);
+               // break;
             case R.id.edit_profile:
                 callbacks.onUserNavPanelItemClicked(3);
                 break;

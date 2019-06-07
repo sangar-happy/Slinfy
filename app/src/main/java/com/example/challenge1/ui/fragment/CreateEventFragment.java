@@ -26,7 +26,9 @@ public class CreateEventFragment extends Fragment implements View.OnClickListene
             , anniversary
             , homeWarming
             , engagement
-            , graduation;
+            , graduation
+            , valentineday
+            , specialday;
     private Callbacks callbacks;
     private ViewModifier viewModifier;
 
@@ -73,6 +75,12 @@ public class CreateEventFragment extends Fragment implements View.OnClickListene
 
         graduation = view.findViewById(R.id.graduation);
         graduation.setOnClickListener(this);
+
+        valentineday = view.findViewById(R.id.valentineday);
+        valentineday.setOnClickListener(this);
+
+        specialday = view.findViewById(R.id.specialday);
+        specialday.setOnClickListener(this);
         // Inflate the layout for this fragment
         return view;
     }
@@ -102,6 +110,14 @@ public class CreateEventFragment extends Fragment implements View.OnClickListene
 
             case R.id.graduation:
                 callbacks.onEventItemClicked("Graduation");
+                break;
+
+            case R.id.valentineday:
+                callbacks.onEventItemClicked("Valentine Day");
+                break;
+
+            case R.id.specialday:
+                callbacks.onEventItemClicked("Special Day");
                 break;
         }
     }

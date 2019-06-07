@@ -78,6 +78,7 @@ public class FragmentNavigationMain extends AppCompatActivity
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
+
 // TODO: check internet connectivity and show a snackbar to user if no connectivity
 
 //        new InternetCheck(this).isInternetConnectionAvailable(new InternetCheck.InternetCheckListener() {
@@ -250,17 +251,9 @@ public class FragmentNavigationMain extends AppCompatActivity
                 break;
 
             case 2:
-
                 break;
 
             case 3:
-//                RealTimeDatabse realTimeDatabse = new RealTimeDatabse();
-//                mFragmentManager = getSupportFragmentManager();
-//                mFragmentManager.beginTransaction()
-//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-//                        .replace(R.id.frame_layout, realTimeDatabse, "TEST")
-//                        .addToBackStack("TEST")
-//                        .commit();
                 break;
         }
 
