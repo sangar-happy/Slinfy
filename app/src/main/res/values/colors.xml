@@ -4,8 +4,5 @@
 	<color name="colorPrimary">#40B5DF</color>
 	<color name="colorAccent">#C9C9CC</color>
 
-	<color name="white">#D1D0D0</color>
-	<color name="black">#ff000000</color>
 	<color name="transparent">#00000000</color>
-	<color name="warning">#DB2D2D</color>
 </resources>

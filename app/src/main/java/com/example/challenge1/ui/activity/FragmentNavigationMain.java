@@ -113,10 +113,10 @@ public class FragmentNavigationMain extends AppCompatActivity
                 return true;
 
             case R.id.logout:
-                if (user != null) {
-                    FirebaseAuth.getInstance().signOut();
-                }
-                updateUi(user);
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(this, FragmentNavigationMain.class);
+                startActivity(intent);
+                finish();
                 return true;
         }
 
@@ -183,6 +183,10 @@ public class FragmentNavigationMain extends AppCompatActivity
             if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                 // remove all the fragments from the stack if a user signs in
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                Intent intent = new Intent(this, FragmentNavigationMain.class);
+                startActivity(intent);
+                finish();
             }
 
             // add the EventsFragment and pass the user object to load user's events
@@ -191,7 +195,6 @@ public class FragmentNavigationMain extends AppCompatActivity
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .add(R.id.frame_layout, eventsFragment, TAG_EVENTS_FRAGMENT)
                     .commit();
-
 
             // update navigation drawer
             UserNavPanel mUserNavPanel = new UserNavPanel();

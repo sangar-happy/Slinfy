@@ -48,8 +48,6 @@ public class EventsFragment extends Fragment {
 
     private static final String EXTRA_NUMBER = "extra_number";
 
-    private EventViewModel eventViewModel;
-
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public EventsFragment() {

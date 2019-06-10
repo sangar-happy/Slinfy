@@ -97,7 +97,7 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
         fragmentCallbacks = (Callbacks) context;
 
         viewModifier = (ViewModifier) context;
-        viewModifier.setTitleInterface(getString(R.string.login));
+        viewModifier.setTitleInterface("Login");
 
         FirebaseApp.initializeApp(context);
         userLoggedIn();
@@ -110,7 +110,7 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
     private void startPhoneNumberVerification() {
         String number = "+91" + phoneNumber.getText().toString();
 
-        if (phoneNumber != null) {
+        if (phoneNumber.length() == 10) {
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
                     number,
                     60,
@@ -169,7 +169,7 @@ public class PhoneAuthFragment extends Fragment implements View.OnClickListener 
         Log.d(TAG, "Checking if user is logged in");
         if (user != null) {
             //send message to main activity to update UI
-            Toast.makeText(getContext(), "User Identified", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Welcome " + getName.getText(), Toast.LENGTH_LONG).show();
 
         } else {
             Log.d(TAG, "User is not logged in");
